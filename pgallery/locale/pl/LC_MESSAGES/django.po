@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-06-03 18:41+0200\n"
+"PO-Revision-Date: 2013-06-03 18:42+0200\n"
+"Last-Translator:   <antyqjon@interia.pl>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Translated-Using: django-rosetta 0.7.2\n"
+
+#: admin.py:47
+msgid "Photo count"
+msgstr "Liczba zdjęć"
+
+#: feeds.py:22
+msgid "siciarz.net - galleries"
+msgstr "siciarz.net - galerie"
+
+#: feeds.py:24
+msgid "Latest photo galleries"
+msgstr "Najnowsze galerie zdjęć"
+
+#: forms.py:15
+msgid "tags"
+msgstr "tagi"
+
+#: models.py:30
+msgid "draft"
+msgstr "szkic"
+
+#: models.py:31
+msgid "published"
+msgstr "opublikowana"
+
+#: models.py:33 models.py:69
+msgid "author"
+msgstr "autor"
+
+#: models.py:34 models.py:70
+msgid "title"
+msgstr "tytuł"
+
+#: models.py:35
+msgid "slug"
+msgstr "slug"
+
+#: models.py:36
+msgid "description"
+msgstr "opis"
+
+#: models.py:37
+msgid "shot date"
+msgstr "data wykonania zdjęcia"
+
+#: models.py:42
+msgid "Galleries"
+msgstr "Galerie"
+
+#: models.py:68
+msgid "gallery"
+msgstr "galeria"
+
+#: models.py:71
+msgid "image"
+msgstr "obraz"
+
+#: models.py:77
+msgid "Photos"
+msgstr "Zdjęcia"
+
+#: templates/pgallery/base_photos.html:5 templates/pgallery/base_photos.html:6
+#: templates/pgallery/photo_detail.html:7 templates/pgallery/photo_detail.html:9
+#: templates/pgallery/photo_detail.html:22
+msgid "Photography"
+msgstr "Fotografia"
+
+#: templates/pgallery/base_photos.html:9 templates/pgallery/photo_detail.html:17
+msgid "photography"
+msgstr "fotografia"
+
+#: templates/pgallery/base_photos.html:18
+msgid "Archive"
+msgstr "Archiwum"
+
+#: templates/pgallery/base_photos.html:27
+msgid "Popular tags"
+msgstr "Popularne tagi"
+
+#: templates/pgallery/gallery_detail.html:39
+msgid "Added on"
+msgstr "Dodane"
+
+#: templates/pgallery/gallery_list.html:26
+msgid "added on"
+msgstr "dodane"
+
+#: templates/pgallery/gallery_list.html:31
+msgid "There aren't any galleries (yet)."
+msgstr "Nie ma (jeszcze) żadnych galerii."
+
+#: templates/pgallery/gallery_list.html:32
+msgid "Meanwhile, enjoy this glorious sketch."
+msgstr "W międzyczasie obejrzyj ten wspaniały skecz."
+
+#: templates/pgallery/gallery_menu.html:6
+msgid "Edit"
+msgstr "Edytuj"
+
+#: templates/pgallery/photo_detail.html:33
+msgid "Tags"
+msgstr "Tagi"
+
+#: templates/pgallery/photo_list.html:6 templates/pgallery/photo_list.html.py:8
+#: templates/pgallery/photo_list.html:17
+msgid "Tag"
+msgstr "Tag"
+
+#: templates/pgallery/recent_galleries.html:6
+msgid "Recent galleries"
+msgstr "Ostatnie galerie"

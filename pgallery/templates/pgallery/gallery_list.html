@@ -1,0 +1,38 @@
+{% extends "pgallery/base_photos.html" %}
+{% load url from future %}
+{% load i18n %}
+{% load pagination_tags %}
+{% load thumbnail %}
+
+{% block content %}
+    {% autopaginate gallery_list 5 %}
+    {% for gallery in gallery_list %}
+        <article>
+            <h1><a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a></h1>
+
+            <ul class="thumbnails">
+                {% for photo in gallery.get_teaser_photos %}
+                <li class="span2">
+                    <a class="thumbnail" title="{{ photo.title }}" href="{{ gallery.get_absolute_url }}">
+                        {% thumbnail photo.image "200x200" crop="center" as im %}
+                            <img src="{{ im.url }}" alt="{{ photo.title }}" />
+                        {% endthumbnail %}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <footer>
+                {% trans "added on" %} {{ gallery.shot_date|date:"DATE_FORMAT" }}
+            </footer>
+        </article>
+    {% empty %}
+        <article>
+            <h1>{% trans "There aren't any galleries (yet)." %}</h1>
+            <p>{% trans "Meanwhile, enjoy this glorious sketch." %}</p>
+            <iframe width="420" height="315" src="http://www.youtube.com/embed/zekiZYSVdeQ" frameborder="0" allowfullscreen></iframe>
+        </article>
+    {% endfor %}
+    {% paginate %}
+{% endblock %}
+

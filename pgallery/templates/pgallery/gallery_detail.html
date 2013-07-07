@@ -1,0 +1,44 @@
+{% extends "pgallery/base_photos.html" %}
+{% load url from future %}
+{% load i18n %}
+{% load disqus_tags %}
+{% load thumbnail %}
+
+{% block title %}{{ gallery.title }} | {{ block.super }}{% endblock %}
+{% block og-type %}article{% endblock %}
+{% block og-title %}{{ gallery.title }} | {{ block.super }}{% endblock %}
+{% block og-url %}{{ gallery.get_absolute_url }}{% endblock %}
+
+{% block extra-head %}
+    <meta property="og:description" content="{{ gallery.description|striptags }}" />
+    <link rel="canonical" href="http://{{ current_site.domain }}{{ gallery.get_absolute_url }}" />
+{% endblock %}
+
+{% block content %}
+    {% disqus_dev %}
+    <article>
+        <h1>{{ gallery.title }}</h1>
+        {% include "pgallery/gallery_menu.html" %}
+
+        {{ gallery.description }}
+
+        <ul class="thumbnails">
+            {% for photo in gallery.photos.all %}
+            <li class="span2">
+                <a class="thumbnail" title="{{ photo.title }}" href="{{ photo.get_absolute_url }}">
+                    {% thumbnail photo.image "200x200" crop="center" as im %}
+                        <img src="{{ im.url }}" alt="{{ photo.title }}" />
+                    {% endthumbnail %}
+                    <span class="description">{{ photo.title }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <footer>
+            {% trans 'Added on' %} {{ gallery.shot_date|date:"DATE_FORMAT" }}
+        </footer>
+        {% disqus_show_comments %}
+    </article>
+{% endblock %}
+

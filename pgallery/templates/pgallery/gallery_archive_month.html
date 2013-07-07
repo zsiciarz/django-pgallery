@@ -1,0 +1,4 @@
+{% extends "pgallery/gallery_list.html" %}
+
+{% block title %}{{ month|date:"F Y" }} | {{ block.super }}{% endblock %}
+{% block og-title %}{{ month|date:"F Y" }} | {{ block.super }}{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load pgallery_tags %}
+
+{% block title %}{% trans "Photography" %} | {{ block.super }}{% endblock %}
+{% block og-title %}{% trans "Photography" %} | {{ block.super }}{% endblock %}
+{% block rss-url %}{% url 'pgallery:gallery_rss' %}{% endblock %}
+
+{% block header-addon %}{% trans "photography" %}{% endblock %}
+
+{% block base-content %}
+    <div class="span9 main-content">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="span3 sidebar archive">
+        {% include "pgallery/recent_galleries.html" %}
+        <section class="archive">
+            <h2>{% trans "Archive" %}</h2>
+            <ul>
+                {% get_gallery_archive_dates as dates %}
+                {% for date in dates %}
+                    <li><a href="{% url 'pgallery:month_archive' year=date.year month=date.month %}">{{ date|date:"F Y" }}</a></li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section class="popular-tags">
+            <h2>{% trans "Popular tags" %}</h2>
+            <ul>
+                {% get_popular_tags as tags %}
+                {% for tag in tags %}
+                    <li><a href="{% url 'pgallery:tagged_photo_list' tag=tag.tag %}" rel="tag">{{ tag.tag }}</a></li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+{% endblock %}
+

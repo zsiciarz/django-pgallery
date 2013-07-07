@@ -1,0 +1,33 @@
+{% extends "pgallery/base_photos.html" %}
+{% load url from future %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block title %}{{ exif_key }}: {{ exif_value }} | {{ block.super }}{% endblock %}
+{% block og-type %}article{% endblock %}
+{% block og-title %}{{ exif_key }}: {{ exif_value }} | {{ block.super }}{% endblock %}
+{% block og-url %}{% url 'pgallery:exif_photo_list' exif_key=exif_key exif_value=exif_value %}{% endblock %}
+
+{% block extra-head %}
+    <link rel="canonical" href="http://{{ current_site.domain }}{% url 'pgallery:exif_photo_list' exif_key=exif_key exif_value=exif_value %}" />
+{% endblock %}
+
+{% block content %}
+    <article>
+        <h1>{{ exif_key }}: {{ exif_value }}</h1>
+
+        <ul class="thumbnails">
+            {% for photo in photo_list %}
+            <li class="span2">
+                <a class="thumbnail" title="{{ photo.title }}" href="{{ photo.get_absolute_url }}">
+                    {% thumbnail photo.image "200x200" crop="center" as im %}
+                        <img src="{{ im.url }}" alt="{{ photo.title }}" />
+                    {% endthumbnail %}
+                    <span class="description">{{ photo.title }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </article>
+{% endblock %}
+

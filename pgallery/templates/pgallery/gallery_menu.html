@@ -1,0 +1,7 @@
+{% load url from future %}
+{% load i18n %}
+
+    {% if user.is_staff %}
+        <span class="label label-info">{{ gallery.get_status_display }}</span>
+        <a href="{% url 'admin:pgallery_gallery_change' gallery.id %}">{% trans "Edit" %}</a>
+    {% endif %}

@@ -1,0 +1,75 @@
+{% extends "base.html"|pjax:request %}
+{% load url from future %}
+{% load i18n %}
+{% load disqus_tags %}
+{% load thumbnail %}
+
+{% block title %}{{ photo.title }} | {% trans "Photography" %} | {{ block.super }}{% endblock %}
+{% block og-type %}article{% endblock %}
+{% block og-title %}{{ photo.title }} | {% trans "Photography" %} | {{ block.super }}{% endblock %}
+{% block og-url %}{{ photo.get_absolute_url }}{% endblock %}
+
+{% block extra-head %}
+    <meta property="og:description" content="{{ photo.title|striptags }}" />
+    <link rel="canonical" href="http://{{ current_site.domain }}{{ photo.get_absolute_url }}" />
+{% endblock %}
+
+{% block header-addon %}{% trans "photography" %}{% endblock %}
+
+{% block base-content %}
+    <div class="span9 main-content big-photo">
+        <article>
+        <a title="{{ photo.title }}" data-title="{{ photo.get_next_photo.title }} | {% trans "Photography" %} | siciarz.net" href="{{ photo.get_next_photo.get_absolute_url }}" class="pjaxer">
+                <img src="{{ photo.image.url }}" alt="{{ photo.title }}" />
+            </a>
+            <section class="exif">
+                <h2>{% trans "Exif data" %}</h2>
+                <table class="table table-condensed">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    {% for key, value in photo.exif.items %}
+                        <tr>
+                            <th>{{ key }}</th>
+                            <td><a href="{% url 'pgallery:exif_photo_list' exif_key=key exif_value=value %}">{{ value }}</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        </article>
+    </div>
+    <div class="span3 sidebar photo">
+        <section class="photo-information">
+            {% disqus_dev %}
+            <h2><a href="{{ photo.gallery.get_absolute_url }}">{{ photo.gallery.title }}</a></h2>
+            {{ photo.title }}
+            <div class="tags">
+                {% trans "Tags" %}:
+                {% for tag in photo.tags %}
+                    <a href="{% url 'pgallery:tagged_photo_list' tag=tag %}" rel="tag">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </div>
+            {% disqus_show_comments %}
+        </section>
+    </div>
+{% endblock %}
+
+{% block extra-script %}
+<script src="{{ STATIC_URL }}js/pjax-standalone.js"></script>
+<script>
+    pjax.connect({
+        'container': 'base-content',
+        'useClass': 'pjaxer',
+        'success': function () {
+            DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.url = window.location.href;
+                }
+            });
+        }
+    });
+</script>
+{{ block.super }}
+{% endblock %}

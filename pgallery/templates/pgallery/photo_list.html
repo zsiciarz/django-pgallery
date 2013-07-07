@@ -1,0 +1,33 @@
+{% extends "pgallery/base_photos.html" %}
+{% load url from future %}
+{% load i18n %}
+{% load thumbnail %}
+
+{% block title %}{% trans "Tag" %}: {{ tag }} | {{ block.super }}{% endblock %}
+{% block og-type %}article{% endblock %}
+{% block og-title %}{% trans "Tag" %}: {{ tag }} | {{ block.super }}{% endblock %}
+{% block og-url %}{% url 'pgallery:tagged_photo_list' tag=tag %}{% endblock %}
+
+{% block extra-head %}
+    <link rel="canonical" href="http://{{ current_site.domain }}{% url 'pgallery:tagged_photo_list' tag=tag %}" />
+{% endblock %}
+
+{% block content %}
+    <article>
+        <h1>{% trans "Tag" %}: {{ tag }}</h1>
+
+        <ul class="thumbnails">
+            {% for photo in photo_list %}
+            <li class="span2">
+                <a class="thumbnail" title="{{ photo.title }}" href="{{ photo.get_absolute_url }}">
+                    {% thumbnail photo.image "200x200" crop="center" as im %}
+                        <img src="{{ im.url }}" alt="{{ photo.title }}" />
+                    {% endthumbnail %}
+                    <span class="description">{{ photo.title }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </article>
+{% endblock %}
+
