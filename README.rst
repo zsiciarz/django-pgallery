@@ -2,6 +2,6 @@
 django-pgallery
 ===============
 
-Photo gallery app for PostgreSQL and Django.
+Photo gallery app for Django using PostgreSQL-specific goodies.
 
 
