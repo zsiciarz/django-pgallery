@@ -1,6 +1,6 @@
 Django==1.6
 djorm-ext-core==0.5
 djorm-ext-expressions==0.6
-djorm-ext-hstore>=0.4.3
+djorm-ext-hstore==0.5
 -e git+git://github.com/ntucker/djorm-ext-pgarray.git#egg=djorm_pgarray
 psycopg2==2.5.1
