@@ -18,6 +18,11 @@ Features
  * image tagging with array data type
  * storing EXIF data in HStore fields
 
+Resources
+---------
+
+ * `Issue tracker <https://github.com/zsiciarz/django-pgallery/issues>`_
+
 Author
 ======
 
