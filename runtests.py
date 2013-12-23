@@ -22,8 +22,8 @@ if not settings.configured:
             'default': {
                 'ENGINE': 'django.db.backends.postgresql_psycopg2',
                 'NAME': 'pgallery',
-                'USER': 'pgallery',
-                'PASSWORD': 'pgallery',
+                'USER': os.environ.get('DATABASE_USER', 'pgallery'),
+                'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'pgallery'),
                 'HOST': 'localhost',
             }
         },
