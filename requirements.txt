@@ -8,4 +8,5 @@ djorm-ext-core==0.7
 djorm-ext-expressions==0.6
 djorm-ext-hstore==0.5
 -e git+git://github.com/ntucker/djorm-ext-pgarray.git#egg=djorm_pgarray
+nose==1.3.0
 psycopg2==2.5.1
