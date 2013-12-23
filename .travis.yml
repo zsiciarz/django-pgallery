@@ -6,7 +6,10 @@ env:
 install:
   - pip install . --use-mirrors
   - pip install -r requirements.txt --use-mirrors
+  - pip install coveralls --use-mirrors
 before_script:
   - psql -c 'create extension hstore;' -U postgres -d template1
   - psql -c 'create database pgallery;' -U postgres
-script: python runtests.py
+script: coverage run runtests.py
+after_success:
+  - coveralls
