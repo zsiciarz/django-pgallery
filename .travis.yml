@@ -8,4 +8,5 @@ install:
   - pip install -r requirements.txt --use-mirrors
 before_script:
   - psql -c 'create database pgallery;' -U postgres
+  - psql -c 'create extension if not exists hstore;' -U postgres -d pgallery
 script: python runtests.py
