@@ -1,4 +1,9 @@
 Django==1.6.1
+Markdown==2.3.1
+Pillow==2.2.2
+django-markitup==2.1
+django-model-utils==1.5.0
+django-nose==1.2
 djorm-ext-core==0.7
 djorm-ext-expressions==0.6
 djorm-ext-hstore==0.5
