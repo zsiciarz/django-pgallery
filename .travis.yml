@@ -1,0 +1,11 @@
+language: python
+python:
+  - "2.7"
+env:
+  - DATABASE_USER="postgres" DATABASE_PASSWORD=""
+install:
+  - pip install . --use-mirrors
+  - pip install -r requirements.txt --use-mirrors
+before_script:
+  - psql -c 'create database test_pgallery;' -U postgres
+script: python runtests.py
