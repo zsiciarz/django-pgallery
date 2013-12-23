@@ -1,4 +1,10 @@
+import os
+
 from django.conf import settings
+
+
+os.environ['REUSE_DB'] = '1'
+
 
 if not settings.configured:
     INSTALLED_APPS = (
