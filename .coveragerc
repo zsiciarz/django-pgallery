@@ -1,0 +1,9 @@
+[report]
+omit =
+    pgallery/__init__.py
+    */migrations/*
+    ../src/*
+    ../lib/*
+    */test*
+    runtests.py
+    /home/travis/virtualenv/*
