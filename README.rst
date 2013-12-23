@@ -2,6 +2,13 @@
 django-pgallery
 ===============
 
+.. image:: https://travis-ci.org/zsiciarz/django-pgallery.png?branch=master
+    :target: https://travis-ci.org/zsiciarz/django-pgallery
+
+.. image:: https://coveralls.io/repos/zsiciarz/django-pgallery/badge.png?branch=master
+    :target: https://coveralls.io/r/zsiciarz/django-pgallery?branch=master
+
+
 Photo gallery app for Django using PostgreSQL-specific goodies.
 
 Overview
