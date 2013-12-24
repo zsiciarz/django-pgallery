@@ -16,11 +16,15 @@ setup(
     license='MIT',
     install_requires=[
         'Django>=1.4',
+        'Pillow',
         'psycopg2>=2.4',
+        'django-markitup>=1.0',
+        'django-model-utils>=1.1',
         'djorm-ext-core>=0.4.2',
         'djorm-ext-expressions>=0.4.4',
         'djorm-ext-hstore>=0.4.2',
-        'djorm-ext-pgarray'
+        'djorm-ext-pgarray',
+        'sorl-thumbnail>=11',
     ],
     packages=find_packages(),
     include_package_data=True,
