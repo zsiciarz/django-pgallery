@@ -16,7 +16,7 @@ setup(
     license='MIT',
     install_requires=[
         'Django>=1.4',
-        'psycopg2',
+        'psycopg2>=2.4',
         'djorm-ext-core>=0.4.2',
         'djorm-ext-expressions>=0.4.4',
         'djorm-ext-hstore>=0.4.2',
