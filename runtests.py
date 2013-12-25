@@ -28,6 +28,7 @@ if not settings.configured:
             }
         },
         INSTALLED_APPS=INSTALLED_APPS,
+        SECRET_KEY='notreallyasecret',
         MARKITUP_FILTER=('markdown.markdown', {'safe_mode': False, 'extensions': ['codehilite']}),
         MARKITUP_SET='markitup/sets/markdown',
     )
