@@ -17,5 +17,4 @@ docs/make.bat
 *,cover
 htmlcov
 .tox/
-
-example_project/example.db
+media/
