@@ -3,6 +3,10 @@ import os
 from django.conf import settings
 
 
+def project_path(path):
+    return os.path.abspath(os.path.join(os.path.dirname(__file__), path))
+
+
 if not settings.configured:
     INSTALLED_APPS = (
         'django.contrib.auth',
@@ -26,6 +30,7 @@ if not settings.configured:
         },
         INSTALLED_APPS=INSTALLED_APPS,
         SECRET_KEY='notreallyasecret',
+        MEDIA_ROOT=project_path('media'),
         MARKITUP_FILTER=('markdown.markdown', {'safe_mode': False, 'extensions': ['codehilite']}),
         MARKITUP_SET='markitup/sets/markdown',
     )
