@@ -6,9 +6,9 @@ from django.test import TestCase
 from ..models import Gallery, Photo
 
 
-class GalleryModelTestCase(TestCase):
+class BaseTestCase(TestCase):
     def setUp(self):
-        super(GalleryModelTestCase, self).setUp()
+        super(BaseTestCase, self).setUp()
         User = get_user_model()
         self.user = User.objects.create_user(
             username='test',
@@ -20,6 +20,12 @@ class GalleryModelTestCase(TestCase):
             title="Test gallery",
             slug="test-gallery",
         )
+
+
+class GalleryModelTestCase(BaseTestCase):
+    """
+    Tests for ``Gallery`` model class.
+    """
 
     def test_str(self):
         """
