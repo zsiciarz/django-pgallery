@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) Zbigniew Siciarz 2012-2013.
+# Copyright (c) Zbigniew Siciarz 2012-2014.
 
 from __future__ import unicode_literals
 
