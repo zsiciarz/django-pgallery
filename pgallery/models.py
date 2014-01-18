@@ -105,10 +105,13 @@ class Photo(TimeStampedModel):
         Updates EXIF data before saving.
         """
         # you really should be doing this in a background task
-        img = Image.open(self.image.file)
-        raw_exif = img._getexif()
-        if raw_exif:
-            self.exif = {ExifTags.TAGS[k]: sanitize_exif_value(k, v) for k, v in raw_exif.items() if k in ExifTags.TAGS}
+        try:
+            img = Image.open(self.image.file)
+            raw_exif = img._getexif()
+            if raw_exif:
+                self.exif = {ExifTags.TAGS[k]: sanitize_exif_value(k, v) for k, v in raw_exif.items() if k in ExifTags.TAGS}
+        except Exception:
+            pass
         super(Photo, self).save(*args, **kwargs)
 
     @models.permalink
