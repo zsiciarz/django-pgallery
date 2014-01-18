@@ -19,6 +19,13 @@ class GalleryFactory(factory.django.DjangoModelFactory):
     author = factory.SubFactory(UserFactory)
 
 
+class PhotoFactory(factory.django.DjangoModelFactory):
+    FACTORY_FOR = Photo
+    gallery = factory.SubFactory(GalleryFactory)
+    author = factory.LazyAttribute(lambda obj: obj.gallery.author)
+    image = factory.django.ImageField(width=1024, height=768)
+
+
 class GalleryModelTestCase(unittest.TestCase):
     """
     Tests for ``Gallery`` model class.
