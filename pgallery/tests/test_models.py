@@ -63,3 +63,16 @@ class PhotoModelTestCase(unittest.TestCase):
         """
         photo = Photo(title="Test photo")
         self.assertEqual(str(photo), photo.title)
+
+
+class PhotoModelIntegrationTestCase(TestCase):
+    """
+    Tests for ``Photo`` model that require database connection.
+    """
+    def test_not_tagged(self):
+        photo = PhotoFactory(tags=['tag1', 'tag2'])
+        self.assertNotIn(photo, Photo.objects.tagged('tag3'))
+
+    def test_tagged(self):
+        photo = PhotoFactory(tags=['tag1', 'tag2'])
+        self.assertIn(photo, Photo.objects.tagged('tag2'))
