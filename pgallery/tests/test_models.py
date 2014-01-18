@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import unittest
 
 from django.conf import settings
+from django.test import TestCase
 
 import factory
 
@@ -29,6 +30,19 @@ class GalleryModelTestCase(unittest.TestCase):
         """
         gallery = Gallery(title="Test gallery")
         self.assertEqual(str(gallery), gallery.title)
+
+
+class GalleryModelIntegrationTestCase(TestCase):
+    """
+    Tests for ``Gallery`` model that require database connection.
+    """
+    def test_unpublished_galleries(self):
+        gallery = GalleryFactory(status='draft')
+        self.assertNotIn(gallery, Gallery.objects.published())
+
+    def test_published_galleries(self):
+        gallery = GalleryFactory(status='published')
+        self.assertIn(gallery, Gallery.objects.published())
 
 
 class PhotoModelTestCase(unittest.TestCase):
