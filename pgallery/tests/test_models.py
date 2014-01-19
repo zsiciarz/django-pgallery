@@ -92,3 +92,19 @@ class PhotoModelIntegrationTestCase(TestCase):
     def test_next_photo_single(self):
         photo = PhotoFactory()
         self.assertEqual(photo.get_next_photo(), photo)
+
+    def test_previous_photo(self):
+        gallery = GalleryFactory()
+        photo1 = PhotoFactory(gallery=gallery)
+        photo2 = PhotoFactory(gallery=gallery)
+        self.assertEqual(photo2.get_previous_photo(), photo1)
+
+    def test_previous_photo_wraparound(self):
+        gallery = GalleryFactory()
+        photo1 = PhotoFactory(gallery=gallery)
+        photo2 = PhotoFactory(gallery=gallery)
+        self.assertEqual(photo1.get_previous_photo(), photo2)
+
+    def test_previous_photo_single(self):
+        photo = PhotoFactory()
+        self.assertEqual(photo.get_previous_photo(), photo)
