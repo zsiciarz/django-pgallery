@@ -51,6 +51,18 @@ class GalleryModelIntegrationTestCase(TestCase):
         gallery = GalleryFactory(status='published')
         self.assertIn(gallery, Gallery.objects.published())
 
+    def test_teaser_photos(self):
+        gallery = GalleryFactory()
+        for i in range(3):
+            PhotoFactory(gallery=gallery)
+        self.assertEqual(len(gallery.get_teaser_photos()), 3)
+
+    def test_teaser_photos_max_number(self):
+        gallery = GalleryFactory()
+        for i in range(7):
+            PhotoFactory(gallery=gallery)
+        self.assertEqual(len(gallery.get_teaser_photos()), 4)
+
 
 class PhotoModelTestCase(unittest.TestCase):
     """
