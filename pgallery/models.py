@@ -132,3 +132,18 @@ class Photo(TimeStampedModel):
         except IndexError:
             next_photo = Photo.objects.filter(gallery=self.gallery)[0]
         return next_photo
+
+    def get_previous_photo(self):
+        """
+        Returns previous photo from the same gallery (in chronological order).
+
+        Wraps around from first photo in the gallery to the last one.
+        """
+        try:
+            previous_photo = Photo.objects.filter(
+                gallery=self.gallery,
+                created__lt=self.created,
+            ).latest('created')
+        except Photo.DoesNotExist:
+            previous_photo = Photo.objects.filter(gallery=self.gallery).latest('created')
+        return previous_photo
