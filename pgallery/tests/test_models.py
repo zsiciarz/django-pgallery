@@ -76,3 +76,19 @@ class PhotoModelIntegrationTestCase(TestCase):
     def test_tagged(self):
         photo = PhotoFactory(tags=['tag1', 'tag2'])
         self.assertIn(photo, Photo.objects.tagged('tag2'))
+
+    def test_next_photo(self):
+        gallery = GalleryFactory()
+        photo1 = PhotoFactory(gallery=gallery)
+        photo2 = PhotoFactory(gallery=gallery)
+        self.assertEqual(photo1.get_next_photo(), photo2)
+
+    def test_next_photo_wraparound(self):
+        gallery = GalleryFactory()
+        photo1 = PhotoFactory(gallery=gallery)
+        photo2 = PhotoFactory(gallery=gallery)
+        self.assertEqual(photo2.get_next_photo(), photo1)
+
+    def test_next_photo_single(self):
+        photo = PhotoFactory()
+        self.assertEqual(photo.get_next_photo(), photo)
