@@ -17,7 +17,7 @@
 {% block header-addon %}{% trans "photography" %}{% endblock %}
 
 {% block base-content %}
-    <div class="span9 main-content big-photo">
+    <div class="col-md-9 main-content big-photo">
         <article>
         <a title="{{ photo.title }}" data-title="{{ photo.get_next_photo.title }} | {% trans "Photography" %} | siciarz.net" href="{{ photo.get_next_photo.get_absolute_url }}" class="pjaxer">
                 <img src="{{ photo.image.url }}" alt="{{ photo.title }}" />
@@ -39,7 +39,7 @@
             </section>
         </article>
     </div>
-    <div class="span3 sidebar photo">
+    <div class="col-md-3 sidebar photo">
         <section class="photo-information">
             {% disqus_dev %}
             <h2><a href="{{ photo.gallery.get_absolute_url }}">{{ photo.gallery.title }}</a></h2>

@@ -9,10 +9,10 @@
 {% block header-addon %}{% trans "photography" %}{% endblock %}
 
 {% block base-content %}
-    <div class="span9 main-content">
+    <div class="col-lg-9 main-content">
         {% block content %}{% endblock %}
     </div>
-    <div class="span3 sidebar archive">
+    <div class="col-lg-3 sidebar archive">
         {% include "pgallery/recent_galleries.html" %}
         <section class="archive">
             <h2>{% trans "Archive" %}</h2>
