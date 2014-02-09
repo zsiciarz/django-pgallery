@@ -2,7 +2,6 @@
 {% load url from future %}
 {% load i18n %}
 {% load disqus_tags %}
-{% load thumbnail %}
 
 {% block title %}{{ photo.title }} | {% trans "Photography" %} | {{ block.super }}{% endblock %}
 {% block og-type %}article{% endblock %}
@@ -20,7 +19,7 @@
     <div class="col-md-9 main-content big-photo">
         <article>
         <a title="{{ photo.title }}" data-title="{{ photo.get_next_photo.title }} | {% trans "Photography" %} | siciarz.net" href="{{ photo.get_next_photo.get_absolute_url }}" class="pjaxer">
-                <img src="{{ photo.image.url }}" alt="{{ photo.title }}" />
+                <img class="img-responsive" src="{{ photo.image.url }}" alt="{{ photo.title }}" />
             </a>
             <section class="exif">
                 <h2>{% trans "Exif data" %}</h2>

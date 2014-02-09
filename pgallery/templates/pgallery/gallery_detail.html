@@ -2,7 +2,6 @@
 {% load url from future %}
 {% load i18n %}
 {% load disqus_tags %}
-{% load thumbnail %}
 
 {% block title %}{{ gallery.title }} | {{ block.super }}{% endblock %}
 {% block og-type %}article{% endblock %}
@@ -19,20 +18,8 @@
     <article>
         <h1>{{ gallery.title }}</h1>
         {% include "pgallery/gallery_menu.html" %}
-
         {{ gallery.description }}
-
-        <ul class="thumbnails">
-            {% for photo in gallery.photos.all %}
-            <li class="span2">
-                <a class="thumbnail" title="{{ photo.title }}" href="{{ photo.get_absolute_url }}">
-                    {% thumbnail photo.image "200x200" crop="center" as im %}
-                        <img src="{{ im.url }}" alt="{{ photo.title }}" />
-                    {% endthumbnail %}
-                    <span class="description">{{ photo.title }}</span>
-                </a>
-            </li>
-            {% endfor %}
+        {% include "pgallery/thumbnail_list.html" with photo_list=gallery.photos.all %}
         </ul>
 
         <footer>
