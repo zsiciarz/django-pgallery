@@ -3,7 +3,7 @@ Markdown==2.4
 Pillow==2.3.0
 coverage==3.7.1
 django-markitup==2.1
-django-model-utils==2.0.1
+django-model-utils==2.0.2
 django-nose==1.2
 djet==0.0.9
 djorm-ext-core==0.7
