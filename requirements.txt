@@ -1,4 +1,4 @@
-Django==1.6.3
+Django==1.6.4
 Markdown==2.4
 Pillow==2.4.0
 coverage==3.7.1
