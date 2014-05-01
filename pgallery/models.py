@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 from PIL import Image, ExifTags
 
 from django.conf import settings
-from django.db import models
+from django.db import connection, models
 from django.db.models.query import QuerySet
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils import six
@@ -77,6 +77,22 @@ class PhotoManager(HStoreManager):
         return self.where(
             HstoreExpression("exif").contains({exif_key: exif_value})
         ).order_by('-gallery__shot_date')
+
+    def popular_tags(self, count=10):
+        query = """
+        select
+            t.tag,
+            count(t.tag) as tag_count
+        from
+            (select unnest(tags) as tag from %s) t
+        group by tag
+        order by tag_count desc
+        limit %%s
+        """ % Photo._meta.db_table
+        cursor = connection.cursor()
+        cursor.execute(query, (count,))
+        tags = [{'tag': row[0], 'count': row[1]} for row in cursor.fetchall()]
+        return tags
 
 
 @python_2_unicode_compatible

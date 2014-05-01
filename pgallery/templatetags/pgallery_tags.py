@@ -4,7 +4,6 @@
 from __future__ import unicode_literals
 
 from django import template
-from django.db import connection
 
 from pgallery.models import Gallery, Photo
 
@@ -32,17 +31,4 @@ def get_popular_tags(count=10):
     """
     Returns most popular tags.
     """
-    query = """
-    select
-        t.tag,
-        count(t.tag) as tag_count
-    from
-        (select unnest(tags) as tag from %s) t
-    group by tag
-    order by tag_count desc
-    limit %%s
-    """ % Photo._meta.db_table
-    cursor = connection.cursor()
-    cursor.execute(query, (count,))
-    tags = [{'tag': row[0], 'count': row[1]} for row in cursor.fetchall()]
-    return tags
+    return Photo.objects.popular_tags(count)
