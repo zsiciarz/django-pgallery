@@ -12,6 +12,6 @@ djorm-ext-hstore==0.6
 djorm-ext-pgarray==0.10
 factory-boy==2.3.1
 nose==1.3.3
-psycopg2==2.5.2
+psycopg2==2.5.3
 six==1.6.1
 sorl-thumbnail==11.12
