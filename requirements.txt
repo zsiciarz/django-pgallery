@@ -1,5 +1,5 @@
 Django==1.6.5
-Markdown==2.4
+Markdown==2.4.1
 Pillow==2.4.0
 coverage==3.7.1
 django-markitup==2.1
