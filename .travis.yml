@@ -11,6 +11,6 @@ install:
 before_script:
   - psql -c 'create extension hstore;' -U postgres -d template1
   - psql -c 'create database pgallery;' -U postgres
-script: coverage run runtests.py
+script: make coverage
 after_success:
   - coveralls
