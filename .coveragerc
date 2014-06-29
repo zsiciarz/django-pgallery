@@ -7,5 +7,4 @@ omit =
     */test*
     */site-packages/*
     */django-admin.py
-    runtests.py
     /home/travis/virtualenv/*
