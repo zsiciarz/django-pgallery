@@ -5,5 +5,7 @@ omit =
     ../src/*
     ../lib/*
     */test*
+    */site-packages/*
+    */django-admin.py
     runtests.py
     /home/travis/virtualenv/*
