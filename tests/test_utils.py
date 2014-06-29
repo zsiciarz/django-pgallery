@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import unittest
 
-from ..models import sanitize_exif_value
+from pgallery.models import sanitize_exif_value
 
 
 class SanitizeExifValueTestCase(unittest.TestCase):

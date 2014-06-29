@@ -7,7 +7,7 @@ from django.test import TestCase
 
 import factory
 
-from ..models import Gallery, Photo
+from pgallery.models import Gallery, Photo
 
 
 class UserFactory(factory.django.DjangoModelFactory):
