@@ -2,12 +2,12 @@
 django-pgallery
 ===============
 
-.. image:: https://pypip.in/v/django-pgallery/badge.png
-    :target: https://crate.io/packages/django-pgallery/
+.. image:: https://pypip.in/version/django-pgallery/badge.png
+    :target: https://pypi.python.org/pypi/django-pgallery/
     :alt: Latest PyPI version
 
-.. image:: https://pypip.in/d/django-pgallery/badge.png
-    :target: https://crate.io/packages/django-pgallery/
+.. image:: https://pypip.in/download/django-pgallery/badge.png
+    :target: https://pypi.python.org/pypi/django-pgallery/
     :alt: Number of PyPI downloads
 
 .. image:: https://travis-ci.org/zsiciarz/django-pgallery.png?branch=master
