@@ -12,6 +12,6 @@ djorm-ext-pgarray==0.10
 factory-boy==2.4.1
 psycopg2==2.5.3
 six==1.7.3
-sorl-thumbnail==11.12
+sorl-thumbnail==11.12.1b
 tox==1.7.2
 virtualenv==1.11.6
