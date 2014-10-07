@@ -4,7 +4,7 @@ Pillow==2.6.0
 coverage==3.7.1
 django-markitup==2.2.2
 django-model-utils==2.2
-djet==0.0.9
+djet==0.0.10
 djorm-ext-core==0.7
 djorm-ext-expressions==0.6
 djorm-ext-hstore==0.6
