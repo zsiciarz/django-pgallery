@@ -1,17 +1,11 @@
 Django==1.6.7
 Markdown==2.5.1
 Pillow==2.6.1
-coverage==3.7.1
 django-markitup==2.2.2
 django-model-utils==2.2
-djet==0.0.10
 djorm-ext-core==0.7
 djorm-ext-expressions==0.6
 djorm-ext-hstore==0.6
 djorm-ext-pgarray==0.10
-factory-boy==2.4.1
 psycopg2==2.5.4
 six==1.8.0
-sorl-thumbnail==11.12.1b
-tox==1.8.0
-virtualenv==1.11.6
