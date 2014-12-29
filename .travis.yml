@@ -1,22 +1,19 @@
 language: python
-python:
-  - "2.7"
-  - "3.3"
-  - "3.4"
 addons:
     postgresql: "9.3"
 env:
   - DATABASE_USER="postgres" DATABASE_PASSWORD=""
+  - TOXENV=py27-dj16
+  - TOXENV=py33-dj16
+  - TOXENV=py34-dj16
 install:
   - pip install pip setuptools --upgrade
-  - pip install .
-  - pip install -r test_requirements.txt
-  - pip install coveralls
+  - pip install tox coveralls
 before_script:
   - psql -c 'create extension hstore;' -U postgres -d template1
   - psql -c 'create database pgallery;' -U postgres
 script:
     - export PYTHONPATH=$PYTHONPATH:`pwd`
-    - make coverage
+    - tox
 after_success:
   - coveralls
