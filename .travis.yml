@@ -2,10 +2,9 @@ language: python
 addons:
     postgresql: "9.3"
 env:
-  - DATABASE_USER="postgres" DATABASE_PASSWORD=""
-  - TOXENV=py27-dj16
-  - TOXENV=py33-dj16
-  - TOXENV=py34-dj16
+  - TOXENV=py27-dj16 DATABASE_USER="postgres" DATABASE_PASSWORD=""
+  - TOXENV=py33-dj16 DATABASE_USER="postgres" DATABASE_PASSWORD=""
+  - TOXENV=py34-dj16 DATABASE_USER="postgres" DATABASE_PASSWORD=""
 install:
   - pip install pip setuptools --upgrade
   - pip install tox coveralls
