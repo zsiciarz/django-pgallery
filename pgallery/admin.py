@@ -11,8 +11,6 @@ from django.contrib import admin
 from django.db.models import Count
 from django.utils.translation import ugettext_lazy as _
 
-import reversion
-
 from .forms import PhotoForm
 from .models import Gallery, Photo
 
@@ -26,7 +24,7 @@ class PhotoInline(admin.TabularInline):
     ordering = ['created']
 
 
-class GalleryAdmin(reversion.VersionAdmin):
+class GalleryAdmin(admin.ModelAdmin):
     """
     Administration for galleries.
     """
