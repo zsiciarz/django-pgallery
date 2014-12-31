@@ -43,11 +43,9 @@ class GalleryAdmin(admin.ModelAdmin):
         return obj.photo_count
     photo_count.short_description = _("Photo count")
 
-    def queryset(self, request):
+    def get_queryset(self, request):
         """
         Add number of photos to each gallery.
-
-        TODO rename to get_queryset for Django 1.6.
         """
         qs = super(GalleryAdmin, self).queryset(request)
         return qs.annotate(photo_count=Count('photos'))
