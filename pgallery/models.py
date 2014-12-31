@@ -19,7 +19,6 @@ from markitup.fields import MarkupField
 from model_utils import Choices
 from model_utils.managers import PassThroughManager
 from model_utils.models import StatusModel, TimeStampedModel
-from sorl.thumbnail import ImageField
 
 
 def sanitize_exif_value(key, value):
@@ -94,7 +93,7 @@ class Photo(TimeStampedModel):
     gallery = models.ForeignKey(Gallery, null=True, related_name='photos', verbose_name=_("gallery"))
     author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, verbose_name=_("author"))
     title = models.CharField(_("title"), max_length=255)
-    image = ImageField(_("image"), upload_to='photos/%Y/%m/%d')
+    image = models.ImageField(_("image"), upload_to='photos/%Y/%m/%d')
     tags = ArrayField(dbtype="text")
     exif = DictionaryField(editable=False, default='', db_index=True)
 

@@ -11,8 +11,8 @@ setup(
     long_description=read('README.rst'),
     author='Zbigniew Siciarz',
     author_email='zbigniew@siciarz.net',
-    url='http://github.com/zsiciarz/django-pgallery',
-    download_url='http://pypi.python.org/pypi/django-pgallery',
+    url='https://github.com/zsiciarz/django-pgallery',
+    download_url='https://pypi.python.org/pypi/django-pgallery',
     license='MIT',
     install_requires=[
         'Django>=1.7',
@@ -22,7 +22,6 @@ setup(
         'django-model-utils>=2.0',
         'django-hstore>=1.3.5',
         'djorm-pgarray>=1.2',
-        'sorl-thumbnail>=11',
     ],
     packages=find_packages(exclude=['tests']),
     include_package_data=True,

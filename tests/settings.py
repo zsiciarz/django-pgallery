@@ -21,7 +21,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django_hstore',
     'markitup',
-    'sorl.thumbnail',
     'pgallery',
 )
 

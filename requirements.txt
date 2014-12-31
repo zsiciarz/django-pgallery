@@ -7,4 +7,3 @@ django-model-utils==2.2
 djorm-pgarray==1.2
 psycopg2==2.5.4
 six==1.8.0
-sorl-thumbnail==12.2
