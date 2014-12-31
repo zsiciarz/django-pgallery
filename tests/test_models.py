@@ -94,6 +94,14 @@ class PhotoModelIntegrationTestCase(TestCase):
         photo = PhotoFactory(tags=['tag1', 'tag2'])
         self.assertIn(photo, Photo.objects.tagged('tag2'))
 
+    def test_for_exif(self):
+        photo = PhotoFactory(exif={'Make': 'Canon'})
+        self.assertIn(photo, Photo.objects.for_exif('Make', 'Canon'))
+
+    def test_for_exif_negative(self):
+        photo = PhotoFactory(exif={'Make': 'Nikon'})
+        self.assertNotIn(photo, Photo.objects.for_exif('Make', 'Canon'))
+
     def test_next_photo(self):
         gallery = GalleryFactory()
         photo1 = PhotoFactory(gallery=gallery)
