@@ -1,7 +1,6 @@
 {% extends "pgallery/base_photos.html" %}
 {% load url from future %}
 {% load i18n %}
-{% load disqus_tags %}
 
 {% block title %}{{ gallery.title }} | {{ block.super }}{% endblock %}
 {% block og-type %}article{% endblock %}
@@ -14,7 +13,6 @@
 {% endblock %}
 
 {% block content %}
-    {% disqus_dev %}
     <article>
         <h1>{{ gallery.title }}</h1>
         {% include "pgallery/gallery_menu.html" %}
@@ -25,7 +23,6 @@
         <footer>
             {% trans 'Added on' %} {{ gallery.shot_date|date:"DATE_FORMAT" }}
         </footer>
-        {% disqus_show_comments %}
     </article>
 {% endblock %}
 
