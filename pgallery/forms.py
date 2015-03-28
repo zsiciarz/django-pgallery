@@ -4,15 +4,14 @@
 from __future__ import unicode_literals
 
 from django import forms
+from django.contrib.postgres.forms import SimpleArrayField
 from django.utils.translation import ugettext_lazy as _
-
-from djorm_pgarray.fields import ArrayFormField
 
 from .models import Photo
 
 
 class PhotoForm(forms.ModelForm):
-    tags = ArrayFormField(label=_("tags"), required=False)
+    tags = SimpleArrayField(forms.CharField(), label=_("tags"), required=False)
 
     class Meta:
         model = Photo
