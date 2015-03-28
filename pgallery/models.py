@@ -6,15 +6,13 @@ from __future__ import unicode_literals
 from PIL import Image, ExifTags
 
 from django.conf import settings
+from django.contrib.postgres.fields import ArrayField, HStoreField
 from django.db import connection, models
 from django.db.models.query import QuerySet
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils import six
 from django.utils.translation import ugettext_lazy as _
 
-from django_hstore.hstore import DictionaryField
-from django_hstore.hstore import HStoreManager
-from djorm_pgarray.fields import ArrayField
 from markitup.fields import MarkupField
 from model_utils import Choices
 from model_utils.managers import PassThroughManager
@@ -64,7 +62,7 @@ class Gallery(StatusModel, TimeStampedModel):
         return self.photos.all()[:4]
 
 
-class PhotoManager(HStoreManager):
+class PhotoManager(models.Manager):
     def tagged(self, tag):
         return self.filter(tags__contains=[tag]).order_by('-gallery__shot_date')
 
@@ -94,8 +92,8 @@ class Photo(TimeStampedModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, verbose_name=_("author"))
     title = models.CharField(_("title"), max_length=255)
     image = models.ImageField(_("image"), upload_to='photos/%Y/%m/%d')
-    tags = ArrayField(dbtype="text")
-    exif = DictionaryField(editable=False, default='', db_index=True)
+    tags = ArrayField(models.CharField(max_length=64), blank=True, default=[])
+    exif = HStoreField(editable=False, default={}, db_index=True)
 
     objects = PhotoManager()
 
