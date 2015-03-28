@@ -1,6 +1,6 @@
 language: python
 addons:
-    postgresql: "9.3"
+    postgresql: "9.4"
 env:
   - TOXENV=py27-dj17 DATABASE_USER="postgres" DATABASE_PASSWORD=""
   - TOXENV=py33-dj17 DATABASE_USER="postgres" DATABASE_PASSWORD=""
