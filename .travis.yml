@@ -5,7 +5,7 @@ env:
   - DATABASE_USER="postgres" DATABASE_PASSWORD=""
 install:
   - pip install pip setuptools --upgrade
-  - pip install -r requirements.txt
+  - pip install -r test_requirements.txt
 before_script:
   - psql -c 'create extension hstore;' -U postgres -d template1
   - psql -c 'create database pgallery;' -U postgres
