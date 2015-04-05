@@ -15,7 +15,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from markitup.fields import MarkupField
 from model_utils import Choices
-from model_utils.managers import PassThroughManager
 from model_utils.models import StatusModel, TimeStampedModel
 
 
@@ -42,7 +41,7 @@ class Gallery(StatusModel, TimeStampedModel):
     description = MarkupField(_("description"))
     shot_date = models.DateField(_("shot date"), null=True, blank=True)
 
-    objects = PassThroughManager.for_queryset_class(GalleryQuerySet)()
+    objects = GalleryQuerySet.as_manager()
 
     class Meta:
         verbose_name_plural = _("Galleries")
