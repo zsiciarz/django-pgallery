@@ -1,4 +1,4 @@
-https://www.djangoproject.com/m/releases/1.8/Django-1.8c1.tar.gz#egg=Django
+Django==1.8
 Markdown==2.6.1
 Pillow==2.7.0
 django-markitup==2.2.2
