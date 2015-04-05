@@ -37,6 +37,6 @@ SECRET_KEY = 'notreallyasecret'
 
 MEDIA_ROOT = project_path('media')
 
-MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': False, 'extensions': ['codehilite']})
+MARKITUP_FILTER = ('markdown.markdown', {'extensions': ['markdown.extensions.codehilite']})
 
 MARKITUP_SET = 'markitup/sets/markdown'
