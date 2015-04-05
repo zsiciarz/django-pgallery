@@ -3,13 +3,13 @@
 
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .feeds import GalleryFeed
 from .views import GalleryListView, GalleryMonthArchiveView, \
     GalleryDetailsView, TaggedPhotoListView, ExifPhotoListView, PhotoDetailsView
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(
         regex=r'^$',
         view=GalleryListView.as_view(),
@@ -45,4 +45,4 @@ urlpatterns = patterns('',
         view=GalleryMonthArchiveView.as_view(),
         name='month_archive'
     ),
-)
+]
