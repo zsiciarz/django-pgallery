@@ -20,6 +20,7 @@ class UserFactory(factory.django.DjangoModelFactory):
 
 class GalleryFactory(factory.django.DjangoModelFactory):
     author = factory.SubFactory(UserFactory)
+    slug = factory.Sequence(lambda n: 'gallery_%d' % n)
 
     class Meta:
         model = Gallery
