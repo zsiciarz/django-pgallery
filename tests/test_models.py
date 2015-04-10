@@ -102,6 +102,17 @@ class PhotoModelIntegrationTestCase(TestCase):
         photo = PhotoFactory(exif={'Make': 'Nikon'})
         self.assertNotIn(photo, Photo.objects.for_exif('Make', 'Canon'))
 
+    def test_popular_tags(self):
+        PhotoFactory(tags=['cat'])
+        PhotoFactory(tags=['cat', 'fail'])
+        PhotoFactory(tags=['dog', 'cat', 'fail'])
+        tags = Photo.objects.popular_tags(count=3)
+        self.assertEqual(tags, [
+            {'count': 3, 'tag': 'cat'},
+            {'count': 2, 'tag': 'fail'},
+            {'count': 1, 'tag': 'dog'},
+        ])
+
     def test_next_photo(self):
         gallery = GalleryFactory()
         photo1 = PhotoFactory(gallery=gallery)
