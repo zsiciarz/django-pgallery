@@ -11,6 +11,9 @@ from pgallery.models import Gallery, Photo
 
 
 class UserFactory(factory.django.DjangoModelFactory):
+    username = factory.Sequence(lambda n: 'user_%d' % n)
+    email = factory.Sequence(lambda n: 'user_%d@example.com' % n)
+
     class Meta:
         model = settings.AUTH_USER_MODEL
 
