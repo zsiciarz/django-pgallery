@@ -2,18 +2,20 @@
 {% load i18n %}
 {% load pgallery_tags %}
 
-{% block title %}{% trans "Photography" %} | {{ block.super }}{% endblock %}
-{% block og-title %}{% trans "Photography" %} | {{ block.super }}{% endblock %}
-{% block rss-url %}{% url 'pgallery:gallery_rss' %}{% endblock %}
-
-{% block header-addon %}{% trans "photography" %}{% endblock %}
-
 {% block base-content %}
-    <div class="col-lg-9 main-content">
+    <div class="col-lg-9">
         {% block content %}{% endblock %}
     </div>
-    <div class="col-lg-3 sidebar archive">
-        {% include "pgallery/recent_galleries.html" %}
+    <div class="col-lg-3">
+        <section class="recent-galleries">
+            <h2>{% trans 'Recent galleries' %}</h2>
+            <ul>
+                {% get_recent_galleries 10 as recent_galleries %}
+                {% for gallery in recent_galleries %}
+                    <li><a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </section>
         <section class="archive">
             <h2>{% trans "Archive" %}</h2>
             <ul>

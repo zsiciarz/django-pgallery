@@ -1,26 +1,13 @@
-{% extends "base.html"|pjax:request %}
-{% load url from future %}
+{% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{{ photo.title }} | {% trans "Photography" %} | {{ block.super }}{% endblock %}
-{% block og-type %}article{% endblock %}
-{% block og-title %}{{ photo.title }} | {% trans "Photography" %} | {{ block.super }}{% endblock %}
-{% block og-url %}{{ photo.get_absolute_url }}{% endblock %}
-
-{% block extra-head %}
-    <meta property="og:description" content="{{ photo.title|striptags }}" />
-    <link rel="canonical" href="http://{{ current_site.domain }}{{ photo.get_absolute_url }}" />
-{% endblock %}
-
-{% block header-addon %}{% trans "photography" %}{% endblock %}
-
 {% block base-content %}
-    <div class="col-md-9 main-content big-photo">
+    <div class="col-md-9">
         <article>
-        <a title="{{ photo.title }}" data-title="{{ photo.get_next_photo.title }} | {% trans "Photography" %} | siciarz.net" href="{{ photo.get_next_photo.get_absolute_url }}" class="pjaxer">
+        <a href="{{ photo.get_next_photo.get_absolute_url }}">
                 <img class="img-responsive" src="{{ photo.image.url }}" alt="{{ photo.title }}" />
             </a>
-            <section class="exif">
+            <section>
                 <h2>{% trans "Exif data" %}</h2>
                 <table class="table table-condensed">
                     <thead>
@@ -37,11 +24,11 @@
             </section>
         </article>
     </div>
-    <div class="col-md-3 sidebar photo">
-        <section class="photo-information">
+    <div class="col-md-3">
+        <section>
             <h2><a href="{{ photo.gallery.get_absolute_url }}">{{ photo.gallery.title }}</a></h2>
             {{ photo.title }}
-            <div class="tags">
+            <div>
                 {% trans "Tags" %}:
                 {% for tag in photo.tags %}
                     <a href="{% url 'pgallery:tagged_photo_list' tag=tag %}" rel="tag">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
@@ -49,15 +36,4 @@
             </div>
         </section>
     </div>
-{% endblock %}
-
-{% block extra-script %}
-<script src="{{ STATIC_URL }}js/pjax-standalone.js"></script>
-<script>
-    pjax.connect({
-        'container': 'base-content',
-        'useClass': 'pjaxer'
-    });
-</script>
-{{ block.super }}
 {% endblock %}

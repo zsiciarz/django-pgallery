@@ -1,13 +1,10 @@
 {% load i18n %}
-{% load thumbnail %}
 
 <ul class="thumbnails">
     {% for photo in photo_list %}
     <li>
         <a class="thumbnail" title="{{ photo.title }}" href="{{ photo.get_absolute_url }}">
-            {% thumbnail photo.image "200x200" crop="center" as im %}
-                <img src="{{ im.url }}" alt="{{ photo.title }}" />
-            {% endthumbnail %}
+            <img src="{{ photo.image.url }}" alt="{{ photo.title }}" width="200" height="200" />
             <span class="description">{{ photo.title }}</span>
         </a>
     </li>

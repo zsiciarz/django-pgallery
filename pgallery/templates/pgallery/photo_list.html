@@ -1,15 +1,5 @@
 {% extends "pgallery/base_photos.html" %}
-{% load url from future %}
 {% load i18n %}
-
-{% block title %}{% trans "Tag" %}: {{ tag }} | {{ block.super }}{% endblock %}
-{% block og-type %}article{% endblock %}
-{% block og-title %}{% trans "Tag" %}: {{ tag }} | {{ block.super }}{% endblock %}
-{% block og-url %}{% url 'pgallery:tagged_photo_list' tag=tag %}{% endblock %}
-
-{% block extra-head %}
-    <link rel="canonical" href="http://{{ current_site.domain }}{% url 'pgallery:tagged_photo_list' tag=tag %}" />
-{% endblock %}
 
 {% block content %}
     <article>

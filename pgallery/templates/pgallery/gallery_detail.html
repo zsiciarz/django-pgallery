@@ -1,16 +1,5 @@
 {% extends "pgallery/base_photos.html" %}
-{% load url from future %}
 {% load i18n %}
-
-{% block title %}{{ gallery.title }} | {{ block.super }}{% endblock %}
-{% block og-type %}article{% endblock %}
-{% block og-title %}{{ gallery.title }} | {{ block.super }}{% endblock %}
-{% block og-url %}{{ gallery.get_absolute_url }}{% endblock %}
-
-{% block extra-head %}
-    <meta property="og:description" content="{{ gallery.description|striptags }}" />
-    <link rel="canonical" href="http://{{ current_site.domain }}{{ gallery.get_absolute_url }}" />
-{% endblock %}
 
 {% block content %}
     <article>
