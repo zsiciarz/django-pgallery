@@ -35,6 +35,8 @@ MIDDLEWARE_CLASSES = (
 
 SECRET_KEY = 'notreallyasecret'
 
+ROOT_URLCONF = 'tests.urls'
+
 MEDIA_ROOT = project_path('media')
 
 MARKITUP_FILTER = ('markdown.markdown', {'extensions': ['markdown.extensions.codehilite']})
