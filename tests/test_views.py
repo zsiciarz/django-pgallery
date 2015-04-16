@@ -38,13 +38,13 @@ class ExifPhotoListViewTestCase(ViewTestCase):
     view_class = ExifPhotoListView
 
     def test_photo_found(self):
-        photo = PhotoFactory(exif={'Make': 'Canon'})
+        photo = PhotoFactory(title="Test photo", exif={'Make': 'Canon'})
         request = self.factory.get()
         response = self.view(request, exif_key='Make', exif_value='Canon')
         self.assertContains(response, photo.title)
 
     def test_photo_not_found(self):
-        photo = PhotoFactory(exif={'Make': 'Nikon'})
+        photo = PhotoFactory(title="Test photo", exif={'Make': 'Nikon'})
         request = self.factory.get()
         response = self.view(request, exif_key='Make', exif_value='Canon')
         self.assertNotContains(response, photo.title)
