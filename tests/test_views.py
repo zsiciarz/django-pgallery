@@ -4,8 +4,8 @@ from django.contrib.auth.models import AnonymousUser
 
 from djet.testcases import ViewTestCase
 
-from pgallery.views import GalleryListView, TaggedPhotoListView
-from .factories import GalleryFactory, UserFactory
+from pgallery.views import GalleryListView, TaggedPhotoListView, ExifPhotoListView
+from .factories import GalleryFactory, UserFactory, PhotoFactory
 
 
 class GalleryListViewTestCase(ViewTestCase):
@@ -32,3 +32,13 @@ class TaggedPhotoListViewTestCase(ViewTestCase):
         request = self.factory.get()
         response = self.view(request, tag='example_tag')
         self.assertContains(response, 'example_tag')
+
+
+class ExifPhotoListViewTestCase(ViewTestCase):
+    view_class = ExifPhotoListView
+
+    def test_photo_found(self):
+        photo = PhotoFactory(exif={'Make': 'Canon'})
+        request = self.factory.get()
+        response = self.view(request, exif_key='Make', exif_value='Canon')
+        self.assertContains(response, photo.title)
