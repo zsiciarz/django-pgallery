@@ -42,3 +42,9 @@ class ExifPhotoListViewTestCase(ViewTestCase):
         request = self.factory.get()
         response = self.view(request, exif_key='Make', exif_value='Canon')
         self.assertContains(response, photo.title)
+
+    def test_photo_not_found(self):
+        photo = PhotoFactory(exif={'Make': 'Nikon'})
+        request = self.factory.get()
+        response = self.view(request, exif_key='Make', exif_value='Canon')
+        self.assertNotContains(response, photo.title)
