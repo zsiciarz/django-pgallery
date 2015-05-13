@@ -2,4 +2,4 @@
 coverage==3.7.1
 djet==0.0.10
 factory-boy==2.5.2
-tox==1.9.2
+tox==2.0.1
