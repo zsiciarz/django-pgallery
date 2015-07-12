@@ -6,19 +6,19 @@ django-pgallery
     :target: https://requires.io/github/zsiciarz/django-pgallery/requirements/?branch=master
     :alt: Requirements Status
 
-.. image:: https://pypip.in/version/django-pgallery/badge.svg
+.. image:: https://img.shields.io/pypi/v/django-pgallery.svg
     :target: https://pypi.python.org/pypi/django-pgallery/
     :alt: Latest PyPI version
 
-.. image:: https://pypip.in/download/django-pgallery/badge.svg
+.. image:: https://img.shields.io/pypi/dm/django-pgallery.svg
     :target: https://pypi.python.org/pypi/django-pgallery/
     :alt: Number of PyPI downloads
 
-.. image:: https://pypip.in/py_versions/django-pgallery/badge.svg
+.. image:: https://img.shields.io/pypi/pyversions/django-pgallery.svg
     :target: https://pypi.python.org/pypi/django-pgallery/
     :alt: Supported Python versions
 
-.. image:: https://pypip.in/wheel/django-pgallery/badge.svg
+.. image:: https://img.shields.io/pypi/wheel/django-pgallery.svg
     :target: https://pypi.python.org/pypi/django-pgallery/
     :alt: Wheel Status
 
