@@ -2,6 +2,6 @@ Django==1.8.3
 Markdown==2.6.2
 Pillow==2.9.0
 django-markitup==2.2.2
-django-model-utils==2.2
+django-model-utils==2.3.1
 psycopg2==2.6.1
 six==1.9.0
