@@ -57,6 +57,8 @@ TEMPLATES = [
 
 MEDIA_ROOT = project_path('media')
 
+STATIC_URL = '/static/'
+
 MARKITUP_FILTER = ('markdown.markdown', {'extensions': ['markdown.extensions.codehilite']})
 
 MARKITUP_SET = 'markitup/sets/markdown'
