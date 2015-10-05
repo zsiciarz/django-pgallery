@@ -1,4 +1,4 @@
-Django==1.8.4
+Django==1.8.5
 Markdown==2.6.2
 Pillow==2.9.0
 django-markitup==2.2.2
