@@ -2,7 +2,7 @@
 django-pgallery
 ===============
 
-.. image:: https://requires.io/github/zsiciarz/django-pgallery/requirements.png?branch=master
+.. image:: https://requires.io/github/zsiciarz/django-pgallery/requirements.svg?branch=master
     :target: https://requires.io/github/zsiciarz/django-pgallery/requirements/?branch=master
     :alt: Requirements Status
 
