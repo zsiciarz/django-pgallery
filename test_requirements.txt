@@ -1,5 +1,5 @@
 -r requirements.txt
-coverage==4.0.2
+coverage==4.0.3
 djet==0.1.0
 factory-boy==2.6.0
 tox==2.2.1
