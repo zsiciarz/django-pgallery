@@ -7,6 +7,7 @@ addons:
       - deadsnakes
     packages:
       - python3.5
+      - python3.5-dev
 env:
   - TOXENV=py27-dj18 DATABASE_USER="postgres" DATABASE_PASSWORD=""
   - TOXENV=py33-dj18 DATABASE_USER="postgres" DATABASE_PASSWORD=""
