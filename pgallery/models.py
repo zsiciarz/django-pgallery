@@ -40,6 +40,7 @@ class Gallery(StatusModel, TimeStampedModel):
     slug = models.SlugField(_("slug"), max_length=255, unique=True)
     description = MarkupField(_("description"))
     shot_date = models.DateField(_("shot date"), null=True, blank=True)
+    cover_photo = models.ImageField(_("cover photo"), upload_to='photos/%Y/%m/%d', null=True, blank=True)
 
     objects = GalleryQuerySet.as_manager()
 
