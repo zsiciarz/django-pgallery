@@ -23,6 +23,9 @@ class PhotoInline(admin.TabularInline):
     form = PhotoForm
     ordering = ['created']
 
+    def get_extra(self, request, obj=None, **kwargs):
+        return 0 if obj else 3
+
 
 class GalleryAdmin(admin.ModelAdmin):
     """
