@@ -92,7 +92,7 @@ class Photo(TimeStampedModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, verbose_name=_("author"))
     title = models.CharField(_("title"), max_length=255)
     image = models.ImageField(_("image"), upload_to='photos/%Y/%m/%d')
-    tags = ArrayField(models.CharField(max_length=64), blank=True, default=[])
+    tags = ArrayField(models.CharField(max_length=64), blank=True, default=list)
     exif = HStoreField(editable=False, default={}, db_index=True)
 
     objects = PhotoManager()
