@@ -15,6 +15,9 @@ env:
   - TOXENV=py27-dj19 DATABASE_USER="postgres" DATABASE_PASSWORD=""
   - TOXENV=py34-dj19 DATABASE_USER="postgres" DATABASE_PASSWORD=""
   - TOXENV=py35-dj19 DATABASE_USER="postgres" DATABASE_PASSWORD=""
+  - TOXENV=py27-dj110 DATABASE_USER="postgres" DATABASE_PASSWORD=""
+  - TOXENV=py34-dj110 DATABASE_USER="postgres" DATABASE_PASSWORD=""
+  - TOXENV=py35-dj110 DATABASE_USER="postgres" DATABASE_PASSWORD=""
   - TOXENV=coverage DATABASE_USER="postgres" DATABASE_PASSWORD=""
 install:
   - pip install pip setuptools --upgrade
