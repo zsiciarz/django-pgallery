@@ -20,27 +20,27 @@ env:
 matrix:
   exclude:
     - python: "3.5"
-      env: TOXENV=py36-dj111
+      env: TOXENV=py36-dj111 DATABASE_USER="postgres" DATABASE_PASSWORD=""
     - python: "3.5"
-      env: TOXENV=coverage
+      env: TOXENV=coverage DATABASE_USER="postgres" DATABASE_PASSWORD=""
     - python: "3.6"
-      env: TOXENV=py27-dj19
+      env: TOXENV=py27-dj19 DATABASE_USER="postgres" DATABASE_PASSWORD=""
     - python: "3.6"
-      env: TOXENV=py27-dj110
+      env: TOXENV=py27-dj110 DATABASE_USER="postgres" DATABASE_PASSWORD=""
     - python: "3.6"
-      env: TOXENV=py27-dj111
+      env: TOXENV=py27-dj111 DATABASE_USER="postgres" DATABASE_PASSWORD=""
     - python: "3.6"
-      env: TOXENV=py34-dj19
+      env: TOXENV=py34-dj19 DATABASE_USER="postgres" DATABASE_PASSWORD=""
     - python: "3.6"
-      env: TOXENV=py34-dj110
+      env: TOXENV=py34-dj110 DATABASE_USER="postgres" DATABASE_PASSWORD=""
     - python: "3.6"
-      env: TOXENV=py34-dj111
+      env: TOXENV=py34-dj111 DATABASE_USER="postgres" DATABASE_PASSWORD=""
     - python: "3.6"
-      env: TOXENV=py35-dj19
+      env: TOXENV=py35-dj19 DATABASE_USER="postgres" DATABASE_PASSWORD=""
     - python: "3.6"
-      env: TOXENV=py35-dj110
+      env: TOXENV=py35-dj110 DATABASE_USER="postgres" DATABASE_PASSWORD=""
     - python: "3.6"
-      env: TOXENV=py35-dj111
+      env: TOXENV=py35-dj111 DATABASE_USER="postgres" DATABASE_PASSWORD=""
 install:
   - pip install pip setuptools --upgrade
   - pip install tox
