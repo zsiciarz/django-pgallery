@@ -35,7 +35,7 @@ class Gallery(StatusModel, TimeStampedModel):
         ('draft', _("draft")),
         ('published', _("published")),
     )
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, verbose_name=_("author"))
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, verbose_name=_("author"), on_delete=models.CASCADE)
     title = models.CharField(_("title"), max_length=255)
     slug = models.SlugField(_("slug"), max_length=255, unique=True)
     description = MarkupField(_("description"))
@@ -88,8 +88,8 @@ class PhotoManager(models.Manager):
 
 @python_2_unicode_compatible
 class Photo(TimeStampedModel):
-    gallery = models.ForeignKey(Gallery, null=True, related_name='photos', verbose_name=_("gallery"))
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, verbose_name=_("author"))
+    gallery = models.ForeignKey(Gallery, null=True, related_name='photos', verbose_name=_("gallery"), on_delete=models.CASCADE)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, verbose_name=_("author"), on_delete=models.CASCADE)
     title = models.CharField(_("title"), max_length=255)
     image = models.ImageField(_("image"), upload_to='photos/%Y/%m/%d')
     tags = ArrayField(models.CharField(max_length=64), blank=True, default=list)
