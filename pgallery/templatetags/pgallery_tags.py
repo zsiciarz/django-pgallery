@@ -10,7 +10,7 @@ from pgallery.models import Gallery, Photo
 register = template.Library()
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_recent_galleries(count=3):
     """
     Returns most recent galleries.
@@ -18,7 +18,7 @@ def get_recent_galleries(count=3):
     return Gallery.objects.published().order_by('-shot_date')[:count]
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_gallery_archive_dates():
     """
     Returns datetime objects for all months in which galleries were added.
@@ -26,7 +26,7 @@ def get_gallery_archive_dates():
     return Gallery.objects.published().dates('shot_date', 'month', order='DESC')
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_popular_tags(count=10):
     """
     Returns most popular tags.
