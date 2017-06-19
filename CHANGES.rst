@@ -7,6 +7,11 @@ Unreleased
 
 * none yet
 
+0.8.1
+=====
+
+* fix initial migration not having on_delete on FKs
+
 0.8.0
 =====
 
