@@ -1,31 +1,17 @@
 sudo: false
 language: python
 python:
-    - "3.5"
     - "3.6"
 addons:
   postgresql: "9.4"
 env:
-  - TOXENV=py27-dj110 DATABASE_USER="postgres" DATABASE_PASSWORD=""
-  - TOXENV=py35-dj110 DATABASE_USER="postgres" DATABASE_PASSWORD=""
   - TOXENV=py27-dj111 DATABASE_USER="postgres" DATABASE_PASSWORD=""
-  - TOXENV=py35-dj111 DATABASE_USER="postgres" DATABASE_PASSWORD=""
   - TOXENV=py36-dj111 DATABASE_USER="postgres" DATABASE_PASSWORD=""
   - TOXENV=coverage DATABASE_USER="postgres" DATABASE_PASSWORD=""
 matrix:
   exclude:
-    - python: "3.5"
-      env: TOXENV=py36-dj111 DATABASE_USER="postgres" DATABASE_PASSWORD=""
-    - python: "3.5"
-      env: TOXENV=coverage DATABASE_USER="postgres" DATABASE_PASSWORD=""
-    - python: "3.6"
-      env: TOXENV=py27-dj110 DATABASE_USER="postgres" DATABASE_PASSWORD=""
     - python: "3.6"
       env: TOXENV=py27-dj111 DATABASE_USER="postgres" DATABASE_PASSWORD=""
-    - python: "3.6"
-      env: TOXENV=py35-dj110 DATABASE_USER="postgres" DATABASE_PASSWORD=""
-    - python: "3.6"
-      env: TOXENV=py35-dj111 DATABASE_USER="postgres" DATABASE_PASSWORD=""
 install:
   - pip install pip setuptools --upgrade
   - pip install tox
