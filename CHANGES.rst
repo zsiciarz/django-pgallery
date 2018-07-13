@@ -5,7 +5,8 @@ Changelog
 Unreleased
 ==========
 
-* Drop support for Django 1.9 and Python 3.4
+* Drop support for Django < 1.11 and Python 3.4 and 3.5
+* Add support for Django 2.0
 
 0.8.1
 =====
