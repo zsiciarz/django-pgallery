@@ -5,7 +5,6 @@ python:
 addons:
   postgresql: "9.4"
 env:
-  - TOXENV=py27-dj111 DATABASE_USER="postgres" DATABASE_PASSWORD=""
   - TOXENV=py36-dj111 DATABASE_USER="postgres" DATABASE_PASSWORD=""
   - TOXENV=py36-dj20 DATABASE_USER="postgres" DATABASE_PASSWORD=""
   - TOXENV=coverage DATABASE_USER="postgres" DATABASE_PASSWORD=""
