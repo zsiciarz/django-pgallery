@@ -18,3 +18,4 @@ docs/make.bat
 htmlcov
 .tox/
 media/
+.mypy_cache
