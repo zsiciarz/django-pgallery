@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib.postgres.fields import ArrayField, HStoreField
 from django.db import connection, models
 from django.db.models.query import QuerySet
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from markitup.fields import MarkupField
@@ -46,9 +47,8 @@ class Gallery(StatusModel, TimeStampedModel):
         """
         return self.title
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('pgallery:gallery_details', [], {'slug': self.slug})
+        return reverse('pgallery:gallery_details', kwargs={'slug': self.slug})
 
     def get_teaser_photos(self):
         return self.photos.all()[:4]
@@ -112,9 +112,8 @@ class Photo(TimeStampedModel):
             pass
         super(Photo, self).save(*args, **kwargs)
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('pgallery:photo_details', [], {'pk': self.pk})
+        return reverse('pgallery:photo_details', kwargs={'pk': self.pk})
 
     def get_next_photo(self):
         """
