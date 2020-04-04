@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-# Copyright (c) Zbigniew Siciarz 2012-2016.
-
-from __future__ import unicode_literals
-
 from django import forms
 from django.contrib.postgres.forms import SimpleArrayField
 from django.utils.translation import ugettext_lazy as _

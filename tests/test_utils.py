@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import unittest
 
 from pgallery.models import sanitize_exif_value

@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-# Copyright (c) Zbigniew Siciarz 2012-2016.
-
-from __future__ import unicode_literals
-
 from django.views.generic import ListView, DetailView, MonthArchiveView
 
 from .models import Gallery, Photo

@@ -1,16 +1,9 @@
-# -*- coding: utf-8 -*-
-# Copyright (c) Zbigniew Siciarz 2012-2016.
-
-from __future__ import unicode_literals
-
 from PIL import Image, ExifTags
 
 from django.conf import settings
 from django.contrib.postgres.fields import ArrayField, HStoreField
 from django.db import connection, models
 from django.db.models.query import QuerySet
-from django.utils.encoding import python_2_unicode_compatible
-from django.utils import six
 from django.utils.translation import ugettext_lazy as _
 
 from markitup.fields import MarkupField
@@ -19,7 +12,7 @@ from model_utils.models import StatusModel, TimeStampedModel
 
 
 def sanitize_exif_value(key, value):
-    if isinstance(value, six.string_types):
+    if isinstance(value, str):
         return value.replace('\x00', '').strip()
     return str(value)
 
@@ -29,7 +22,6 @@ class GalleryQuerySet(QuerySet):
         return self.filter(status='published')
 
 
-@python_2_unicode_compatible
 class Gallery(StatusModel, TimeStampedModel):
     STATUS = Choices(
         ('draft', _("draft")),
@@ -86,7 +78,6 @@ class PhotoManager(models.Manager):
         return tags
 
 
-@python_2_unicode_compatible
 class Photo(TimeStampedModel):
     gallery = models.ForeignKey(Gallery, null=True, related_name='photos', verbose_name=_("gallery"), on_delete=models.CASCADE)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, verbose_name=_("author"), on_delete=models.CASCADE)
