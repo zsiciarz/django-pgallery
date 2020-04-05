@@ -23,12 +23,13 @@ class GalleryModelIntegrationTestCase(TestCase):
     """
     Tests for ``Gallery`` model that require database connection.
     """
+
     def test_unpublished_galleries(self):
-        gallery = GalleryFactory(status='draft')
+        gallery = GalleryFactory(status="draft")
         self.assertNotIn(gallery, Gallery.objects.published())
 
     def test_published_galleries(self):
-        gallery = GalleryFactory(status='published')
+        gallery = GalleryFactory(status="published")
         self.assertIn(gallery, Gallery.objects.published())
 
     def test_teaser_photos(self):
@@ -61,32 +62,36 @@ class PhotoModelIntegrationTestCase(TestCase):
     """
     Tests for ``Photo`` model that require database connection.
     """
+
     def test_not_tagged(self):
-        photo = PhotoFactory(tags=['tag1', 'tag2'])
-        self.assertNotIn(photo, Photo.objects.tagged('tag3'))
+        photo = PhotoFactory(tags=["tag1", "tag2"])
+        self.assertNotIn(photo, Photo.objects.tagged("tag3"))
 
     def test_tagged(self):
-        photo = PhotoFactory(tags=['tag1', 'tag2'])
-        self.assertIn(photo, Photo.objects.tagged('tag2'))
+        photo = PhotoFactory(tags=["tag1", "tag2"])
+        self.assertIn(photo, Photo.objects.tagged("tag2"))
 
     def test_for_exif(self):
-        photo = PhotoFactory(exif={'Make': 'Canon'})
-        self.assertIn(photo, Photo.objects.for_exif('Make', 'Canon'))
+        photo = PhotoFactory(exif={"Make": "Canon"})
+        self.assertIn(photo, Photo.objects.for_exif("Make", "Canon"))
 
     def test_for_exif_negative(self):
-        photo = PhotoFactory(exif={'Make': 'Nikon'})
-        self.assertNotIn(photo, Photo.objects.for_exif('Make', 'Canon'))
+        photo = PhotoFactory(exif={"Make": "Nikon"})
+        self.assertNotIn(photo, Photo.objects.for_exif("Make", "Canon"))
 
     def test_popular_tags(self):
-        PhotoFactory(tags=['cat'])
-        PhotoFactory(tags=['cat', 'fail'])
-        PhotoFactory(tags=['dog', 'cat', 'fail'])
+        PhotoFactory(tags=["cat"])
+        PhotoFactory(tags=["cat", "fail"])
+        PhotoFactory(tags=["dog", "cat", "fail"])
         tags = Photo.objects.popular_tags(count=3)
-        self.assertEqual(tags, [
-            {'count': 3, 'tag': 'cat'},
-            {'count': 2, 'tag': 'fail'},
-            {'count': 1, 'tag': 'dog'},
-        ])
+        self.assertEqual(
+            tags,
+            [
+                {"count": 3, "tag": "cat"},
+                {"count": 2, "tag": "fail"},
+                {"count": 1, "tag": "dog"},
+            ],
+        )
 
     def test_next_photo(self):
         gallery = GalleryFactory()

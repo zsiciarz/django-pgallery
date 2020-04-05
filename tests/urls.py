@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
 
 urlpatterns = [
-    url(r'', include('pgallery.urls', namespace='pgallery')),
+    url(r"", include("pgallery.urls", namespace="pgallery")),
 ]

@@ -7,13 +7,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('pgallery', '0003_gallery_cover_photo'),
+        ("pgallery", "0003_gallery_cover_photo"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='photo',
-            name='tags',
-            field=django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=64), blank=True, default=list, size=None),
+            model_name="photo",
+            name="tags",
+            field=django.contrib.postgres.fields.ArrayField(
+                base_field=models.CharField(max_length=64),
+                blank=True,
+                default=list,
+                size=None,
+            ),
         ),
     ]

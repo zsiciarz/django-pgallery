@@ -14,32 +14,36 @@ from model_utils.models import StatusModel, TimeStampedModel
 
 def sanitize_exif_value(key, value):
     if isinstance(value, str):
-        return value.replace('\x00', '').strip()
+        return value.replace("\x00", "").strip()
     return str(value)
 
 
 class GalleryQuerySet(QuerySet):
     def published(self):
-        return self.filter(status='published')
+        return self.filter(status="published")
 
 
 class Gallery(StatusModel, TimeStampedModel):
-    STATUS = Choices(
-        ('draft', _("draft")),
-        ('published', _("published")),
+    STATUS = Choices(("draft", _("draft")), ("published", _("published")),)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        editable=False,
+        verbose_name=_("author"),
+        on_delete=models.CASCADE,
     )
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, verbose_name=_("author"), on_delete=models.CASCADE)
     title = models.CharField(_("title"), max_length=255)
     slug = models.SlugField(_("slug"), max_length=255, unique=True)
     description = MarkupField(_("description"))
     shot_date = models.DateField(_("shot date"), null=True, blank=True)
-    cover_photo = models.ImageField(_("cover photo"), upload_to='photos/%Y/%m/%d', null=True, blank=True)
+    cover_photo = models.ImageField(
+        _("cover photo"), upload_to="photos/%Y/%m/%d", null=True, blank=True
+    )
 
     objects = GalleryQuerySet.as_manager()
 
     class Meta:
         verbose_name_plural = _("Galleries")
-        ordering = ['-shot_date']
+        ordering = ["-shot_date"]
 
     def __str__(self):
         """
@@ -48,7 +52,7 @@ class Gallery(StatusModel, TimeStampedModel):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('pgallery:gallery_details', kwargs={'slug': self.slug})
+        return reverse("pgallery:gallery_details", kwargs={"slug": self.slug})
 
     def get_teaser_photos(self):
         return self.photos.all()[:4]
@@ -56,13 +60,16 @@ class Gallery(StatusModel, TimeStampedModel):
 
 class PhotoManager(models.Manager):
     def tagged(self, tag):
-        return self.filter(tags__contains=[tag]).order_by('-gallery__shot_date')
+        return self.filter(tags__contains=[tag]).order_by("-gallery__shot_date")
 
     def for_exif(self, exif_key, exif_value):
-        return self.filter(exif__contains={exif_key: exif_value}).order_by('-gallery__shot_date')
+        return self.filter(exif__contains={exif_key: exif_value}).order_by(
+            "-gallery__shot_date"
+        )
 
     def popular_tags(self, count=10):
-        query = """
+        query = (
+            """
         select
             t.tag,
             count(t.tag) as tag_count
@@ -71,18 +78,31 @@ class PhotoManager(models.Manager):
         group by tag
         order by tag_count desc
         limit %%s
-        """ % Photo._meta.db_table
+        """
+            % Photo._meta.db_table
+        )
         cursor = connection.cursor()
         cursor.execute(query, (count,))
-        tags = [{'tag': row[0], 'count': row[1]} for row in cursor.fetchall()]
+        tags = [{"tag": row[0], "count": row[1]} for row in cursor.fetchall()]
         return tags
 
 
 class Photo(TimeStampedModel):
-    gallery = models.ForeignKey(Gallery, null=True, related_name='photos', verbose_name=_("gallery"), on_delete=models.CASCADE)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, editable=False, verbose_name=_("author"), on_delete=models.CASCADE)
+    gallery = models.ForeignKey(
+        Gallery,
+        null=True,
+        related_name="photos",
+        verbose_name=_("gallery"),
+        on_delete=models.CASCADE,
+    )
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        editable=False,
+        verbose_name=_("author"),
+        on_delete=models.CASCADE,
+    )
     title = models.CharField(_("title"), max_length=255)
-    image = models.ImageField(_("image"), upload_to='photos/%Y/%m/%d')
+    image = models.ImageField(_("image"), upload_to="photos/%Y/%m/%d")
     tags = ArrayField(models.CharField(max_length=64), blank=True, default=list)
     exif = HStoreField(editable=False, default={}, db_index=True)
 
@@ -90,7 +110,7 @@ class Photo(TimeStampedModel):
 
     class Meta:
         verbose_name_plural = _("Photos")
-        ordering = ['created']
+        ordering = ["created"]
 
     def __str__(self):
         """
@@ -107,13 +127,17 @@ class Photo(TimeStampedModel):
             img = Image.open(self.image.file)
             raw_exif = img._getexif()
             if raw_exif:
-                self.exif = {ExifTags.TAGS[k]: sanitize_exif_value(k, v) for k, v in raw_exif.items() if k in ExifTags.TAGS}
+                self.exif = {
+                    ExifTags.TAGS[k]: sanitize_exif_value(k, v)
+                    for k, v in raw_exif.items()
+                    if k in ExifTags.TAGS
+                }
         except Exception:
             pass
         super(Photo, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('pgallery:photo_details', kwargs={'pk': self.pk})
+        return reverse("pgallery:photo_details", kwargs={"pk": self.pk})
 
     def get_next_photo(self):
         """
@@ -123,8 +147,7 @@ class Photo(TimeStampedModel):
         """
         try:
             next_photo = Photo.objects.filter(
-                gallery=self.gallery,
-                created__gt=self.created,
+                gallery=self.gallery, created__gt=self.created,
             )[0]
         except IndexError:
             next_photo = Photo.objects.filter(gallery=self.gallery)[0]
@@ -138,9 +161,10 @@ class Photo(TimeStampedModel):
         """
         try:
             previous_photo = Photo.objects.filter(
-                gallery=self.gallery,
-                created__lt=self.created,
-            ).latest('created')
+                gallery=self.gallery, created__lt=self.created,
+            ).latest("created")
         except Photo.DoesNotExist:
-            previous_photo = Photo.objects.filter(gallery=self.gallery).latest('created')
+            previous_photo = Photo.objects.filter(gallery=self.gallery).latest(
+                "created"
+            )
         return previous_photo

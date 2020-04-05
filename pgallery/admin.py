@@ -14,9 +14,10 @@ class PhotoInline(admin.TabularInline):
     """
     Administration for photos.
     """
+
     model = Photo
     form = PhotoForm
-    ordering = ['created']
+    ordering = ["created"]
 
     def get_extra(self, request, obj=None, **kwargs):
         return 0 if obj else 3
@@ -26,19 +27,26 @@ class GalleryAdmin(admin.ModelAdmin):
     """
     Administration for galleries.
     """
+
     list_display = (
-        'author', 'title', 'status', 'description', 'shot_date', 'modified',
-        'photo_count',
+        "author",
+        "title",
+        "status",
+        "description",
+        "shot_date",
+        "modified",
+        "photo_count",
     )
-    list_display_links = ('title',)
-    list_editable = ('status',)
-    list_filter = ('status',)
-    date_hierarchy = 'shot_date'
-    prepopulated_fields = {'slug': ('title',)}
+    list_display_links = ("title",)
+    list_editable = ("status",)
+    list_filter = ("status",)
+    date_hierarchy = "shot_date"
+    prepopulated_fields = {"slug": ("title",)}
     inlines = [PhotoInline]
 
     def photo_count(self, obj):
         return obj.photo_count
+
     photo_count.short_description = _("Photo count")
 
     def get_queryset(self, request):
@@ -46,7 +54,7 @@ class GalleryAdmin(admin.ModelAdmin):
         Add number of photos to each gallery.
         """
         qs = super(GalleryAdmin, self).get_queryset(request)
-        return qs.annotate(photo_count=Count('photos'))
+        return qs.annotate(photo_count=Count("photos"))
 
     def save_model(self, request, obj, form, change):
         """

@@ -6,13 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('pgallery', '0002_auto_20150417_1442'),
+        ("pgallery", "0002_auto_20150417_1442"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='gallery',
-            name='cover_photo',
-            field=models.ImageField(blank=True, null=True, upload_to='photos/%Y/%m/%d', verbose_name='cover photo'),
+            model_name="gallery",
+            name="cover_photo",
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to="photos/%Y/%m/%d",
+                verbose_name="cover photo",
+            ),
         ),
     ]

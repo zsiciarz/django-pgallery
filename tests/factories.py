@@ -6,8 +6,8 @@ from pgallery.models import Gallery, Photo
 
 
 class UserFactory(factory.django.DjangoModelFactory):
-    username = factory.Sequence(lambda n: 'user_%d' % n)
-    email = factory.Sequence(lambda n: 'user_%d@example.com' % n)
+    username = factory.Sequence(lambda n: "user_%d" % n)
+    email = factory.Sequence(lambda n: "user_%d@example.com" % n)
 
     class Meta:
         model = settings.AUTH_USER_MODEL
@@ -15,7 +15,7 @@ class UserFactory(factory.django.DjangoModelFactory):
 
 class GalleryFactory(factory.django.DjangoModelFactory):
     author = factory.SubFactory(UserFactory)
-    slug = factory.Sequence(lambda n: 'gallery_%d' % n)
+    slug = factory.Sequence(lambda n: "gallery_%d" % n)
 
     class Meta:
         model = Gallery
