@@ -6,7 +6,7 @@ def project_path(path):
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pgallery',
         'USER': os.environ.get('DATABASE_USER', 'pgallery'),
         'PASSWORD': os.environ.get('DATABASE_PASSWORD', 'pgallery'),
