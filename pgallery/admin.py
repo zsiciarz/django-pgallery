@@ -32,7 +32,10 @@ class GalleryAdmin(admin.ModelAdmin):
         "author",
         "title",
         "status",
-        "description",
+        # Having "description" here raises SystemCheckError (admin.E108).
+        # We need to remove description from list_display for Django 2.1-2.2
+        # See https://code.djangoproject.com/ticket/30543
+        # "description",
         "shot_date",
         "modified",
         "photo_count",
