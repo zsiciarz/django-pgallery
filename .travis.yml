@@ -14,7 +14,6 @@ before_script:
   - psql -c 'create extension hstore;' -U postgres -d template1
   - psql -c 'create database pgallery;' -U postgres
 script:
-  - export PYTHONPATH=$PYTHONPATH:`pwd`
   - tox
 after_success:
-  - if [ "$TOXENV" = "coverage" ]; then coveralls; fi
+  - if [ "$TOXENV" = "py37-coverage" ]; then coveralls; fi
