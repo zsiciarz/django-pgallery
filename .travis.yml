@@ -2,20 +2,14 @@ sudo: false
 language: python
 python:
     - "3.6"
+    - "3.7"
 addons:
   postgresql: "9.4"
 env:
-  - TOXENV=py36-dj20 DATABASE_USER="postgres" DATABASE_PASSWORD=""
-  - TOXENV=py36-dj21 DATABASE_USER="postgres" DATABASE_PASSWORD=""
-  - TOXENV=py36-dj22 DATABASE_USER="postgres" DATABASE_PASSWORD=""
-  - TOXENV=py37-dj20 DATABASE_USER="postgres" DATABASE_PASSWORD=""
-  - TOXENV=py37-dj21 DATABASE_USER="postgres" DATABASE_PASSWORD=""
-  - TOXENV=py37-dj22 DATABASE_USER="postgres" DATABASE_PASSWORD=""
-  - TOXENV=coverage DATABASE_USER="postgres" DATABASE_PASSWORD=""
+  - DATABASE_USER="postgres" DATABASE_PASSWORD=""
 install:
   - pip install pip setuptools --upgrade
-  - pip install tox
-  - if [ "$TOXENV" = "coverage" ]; then pip install coveralls; fi
+  - pip install tox tox-travis coveralls
 before_script:
   - psql -c 'create extension hstore;' -U postgres -d template1
   - psql -c 'create database pgallery;' -U postgres
