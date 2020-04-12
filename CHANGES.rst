@@ -7,6 +7,11 @@ Unreleased
 
 * no changes yet
 
+0.9.1
+=====
+
+* Add missing migration file
+
 0.9.0
 =====
 
