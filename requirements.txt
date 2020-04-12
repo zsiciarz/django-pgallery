@@ -1,4 +1,4 @@
-Django==2.0.13
+Django==2.1.15
 Markdown==3.2.1
 Pillow==7.1.1
 django-markitup==3.7.0

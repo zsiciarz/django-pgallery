@@ -17,11 +17,11 @@ setup(
     download_url="https://pypi.python.org/pypi/django-pgallery",
     license="MIT",
     install_requires=[
-        "Django>=1.11,<2.1",
+        "Django>=2.0,<2.2",
         "Pillow",
         "psycopg2>=2.5",
         "django-markitup>=3.5",
-        "django-model-utils>=2.0",
+        "django-model-utils>=4.0",
     ],
     packages=find_packages(exclude=["tests"]),
     include_package_data=True,
