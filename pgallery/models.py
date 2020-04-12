@@ -24,7 +24,7 @@ class GalleryQuerySet(QuerySet):
 
 
 class Gallery(StatusModel, TimeStampedModel):
-    STATUS = Choices(("draft", _("draft")), ("published", _("published")),)
+    STATUS = Choices(("draft", _("draft")), ("published", _("published")))
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         editable=False,
@@ -147,7 +147,7 @@ class Photo(TimeStampedModel):
         """
         try:
             next_photo = Photo.objects.filter(
-                gallery=self.gallery, created__gt=self.created,
+                gallery=self.gallery, created__gt=self.created
             )[0]
         except IndexError:
             next_photo = Photo.objects.filter(gallery=self.gallery)[0]
@@ -161,7 +161,7 @@ class Photo(TimeStampedModel):
         """
         try:
             previous_photo = Photo.objects.filter(
-                gallery=self.gallery, created__lt=self.created,
+                gallery=self.gallery, created__lt=self.created
             ).latest("created")
         except Photo.DoesNotExist:
             previous_photo = Photo.objects.filter(gallery=self.gallery).latest(
