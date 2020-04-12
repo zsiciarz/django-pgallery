@@ -6,7 +6,9 @@ Unreleased
 ==========
 
 * Drop support for Django < 1.11 and Python 3.4 and 3.5
-* Add support for Django 2.0
+* Add support for Django 2.0-2.2
+* Fix example project URLconf
+* Fix having a shared default dict for exif field
 
 0.8.1
 =====
