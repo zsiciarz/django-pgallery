@@ -30,8 +30,8 @@ jobs:
         run: pip install tox tox-gh-actions
       - name: Install psql
         run: |
-          apt update
-          apt install -y postgresql-client
+          sudo apt update
+          sudo apt install -y postgresql-client
       - name: Create Postgres extension and DB
         run: |
           psql -c 'create extension hstore;' -U postgres -d template1
