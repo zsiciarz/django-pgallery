@@ -8,5 +8,6 @@ jobs:
       matrix:
         python-version: [3.6, 3.7, 3.8, 3.9]
     steps:
-       - echo "Triggered from ${{ github.ref }}"
-       - echo "Running Python ${{ matrix.python-version }}"
+      - run: echo "Triggered from ${{ github.ref }}"
+      - run: echo "Running Python ${{ matrix.python-version }}"
+      - uses: actions/checkout@v2
