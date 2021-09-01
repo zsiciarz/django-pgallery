@@ -37,7 +37,7 @@ jobs:
           psql -c 'create extension hstore;' -U postgres -d template1
           psql -c 'create database pgallery;' -U postgres
         env:
-          PGPASSWORD=postgres
+          PGPASSWORD: postgres
       - name: Run tox
         run: python -m tox
         env:
