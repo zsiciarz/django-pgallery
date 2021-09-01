@@ -17,7 +17,7 @@ setup(
     download_url="https://pypi.python.org/pypi/django-pgallery",
     license="MIT",
     install_requires=[
-        "Django>=2.0,<3.0",
+        "Django>=2.2,<4.0",
         "Pillow",
         "psycopg2>=2.5",
         "django-markitup>=3.5",
@@ -36,10 +36,12 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Framework :: Django",
-        "Framework :: Django :: 2.0",
-        "Framework :: Django :: 2.1",
         "Framework :: Django :: 2.2",
+        "Framework :: Django :: 3.1",
+        "Framework :: Django :: 3.2",
         "Topic :: Utilities",
     ],
 )
