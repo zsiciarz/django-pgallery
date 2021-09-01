@@ -7,6 +7,12 @@ Unreleased
 
 * no changes yet
 
+0.10.0
+======
+
+* Drop support for Django 2.0-2.1
+* Add support for Django 3.1-3.2 and Python 3.8-3.9
+
 0.9.1
 =====
 
