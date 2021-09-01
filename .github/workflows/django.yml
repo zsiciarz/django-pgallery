@@ -34,8 +34,8 @@ jobs:
           sudo apt install -y postgresql-client
       - name: Create Postgres extension and DB
         run: |
-          psql -c 'create extension hstore;' -U postgres -d template1
-          psql -c 'create database pgallery;' -U postgres
+          psql -c 'create extension hstore;' -U postgres -h localhost -d template1
+          psql -c 'create database pgallery;' -U postgres -h localhost
         env:
           PGPASSWORD: postgres
       - name: Run tox
