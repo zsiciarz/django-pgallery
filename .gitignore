@@ -19,3 +19,4 @@ htmlcov
 .tox/
 media/
 .mypy_cache
+.python-version
