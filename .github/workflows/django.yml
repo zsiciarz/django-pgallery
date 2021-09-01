@@ -8,6 +8,11 @@ jobs:
       matrix:
         python-version: [3.6, 3.7, 3.8, 3.9]
     steps:
-      - run: echo "Triggered from ${{ github.ref }}"
-      - run: echo "Running Python ${{ matrix.python-version }}"
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "${{ matrix.python-version }}"
+      - name: Upgrade pip
+        run: pip install pip setuptools wheel --upgrade
+      - name: Install tox
+        run: pip install tox tox-gh-actions
