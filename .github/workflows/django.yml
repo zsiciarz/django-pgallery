@@ -28,6 +28,16 @@ jobs:
         run: pip install pip setuptools wheel --upgrade
       - name: Install tox
         run: pip install tox tox-gh-actions
+      - name: Install psql
+        run: |
+          apt update
+          apt install -y postgresql-client
+      - name: Create Postgres extension and DB
+        run: |
+          psql -c 'create extension hstore;' -U postgres -d template1
+          psql -c 'create database pgallery;' -U postgres
+        env:
+          PGPASSWORD=postgres
       - name: Run tox
         run: python -m tox
         env:
