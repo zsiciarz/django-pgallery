@@ -1,6 +1,6 @@
 Django==3.2.9
 Markdown==3.3.4
-Pillow==8.3.2
+Pillow==8.4.0
 django-markitup==4.0.0
 django-model-utils==4.1.1
 psycopg2-binary==2.8.6
