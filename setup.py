@@ -1,5 +1,6 @@
 import os
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 
 def read(fname):
@@ -17,7 +18,7 @@ setup(
     download_url="https://pypi.python.org/pypi/django-pgallery",
     license="MIT",
     install_requires=[
-        "Django>=2.2,<4.0",
+        "Django>=3.2,<4.0",
         "Pillow",
         "psycopg2>=2.5",
         "django-markitup>=3.5",
