@@ -20,7 +20,7 @@ setup(
     install_requires=[
         "Django>=3.2,<4.0",
         "Pillow",
-        "psycopg2>=2.5",
+        "psycopg2>=2.8",
         "django-markitup>=3.5",
         "django-model-utils>=4.0",
     ],
