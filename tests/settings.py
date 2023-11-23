@@ -59,6 +59,8 @@ TEMPLATES = [
 
 MEDIA_ROOT = project_path("media")
 
+USE_TZ = True
+
 STATIC_URL = "/static/"
 
 MARKITUP_FILTER = (
