@@ -5,7 +5,14 @@ Changelog
 Unreleased
 ==========
 
-* no changes yet
+* Drop support for Django 3.2
+
+0.11.0
+======
+
+* Support Django 3.2 through 4.2 (a transitional release for users who
+  upgrade their project from 3 to 4)
+* Add support for Python 3.10, 3.11 and 3.12 (with Django >= 4.2)
 
 0.10.0
 ======
