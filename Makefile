@@ -2,7 +2,7 @@
 
 test:
 	export PYTHONPATH=`pwd` && \
-	python tests/manage.py test tests --keepdb
+	python -Wd tests/manage.py test tests --keepdb
 
 coverage:
 	export PYTHONPATH=`pwd` && \
