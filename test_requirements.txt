@@ -1,4 +1,4 @@
 -r requirements.txt
-coverage==7.3.2
+coverage==7.6.4
 djet==0.3.0
-factory-boy==3.3.0
+factory-boy==3.3.1
