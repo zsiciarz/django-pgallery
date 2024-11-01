@@ -1,4 +1,4 @@
-.PHONY: test coverage
+.PHONY: test coverage check
 
 test:
 	export PYTHONPATH=`pwd` && \
@@ -8,3 +8,6 @@ coverage:
 	export PYTHONPATH=`pwd` && \
 	coverage run tests/manage.py test tests --keepdb
 	coverage html
+
+check:
+	pre-commit run --all-files
