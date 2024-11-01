@@ -86,7 +86,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["-shot_date"], "verbose_name_plural": "Galleries",},
+            options={
+                "ordering": ["-shot_date"],
+                "verbose_name_plural": "Galleries",
+            },
         ),
         migrations.CreateModel(
             name="Photo",
@@ -155,6 +158,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"ordering": ["created"], "verbose_name_plural": "Photos",},
+            options={
+                "ordering": ["created"],
+                "verbose_name_plural": "Photos",
+            },
         ),
     ]
