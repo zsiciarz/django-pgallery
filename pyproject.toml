@@ -41,3 +41,6 @@ source = "https://github.com/zsiciarz/django-pgallery"
 
 [tool.setuptools.dynamic]
 version = {attr = "pgallery.__version__"}
+
+[tool.ruff.lint]
+select = ["DJ", "E", "F", "W"]
