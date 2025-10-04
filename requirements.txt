@@ -1,6 +1,0 @@
-Django>=4.2
-Markdown==3.7
-Pillow==11.0
-django-markitup==4.1.0
-django-model-utils==5.0.0
-psycopg2-binary==2.9.10

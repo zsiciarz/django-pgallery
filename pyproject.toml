@@ -1,9 +1,6 @@
-[build-system]
-requires = ["setuptools>=68.0"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "django-pgallery"
+version = "0.12a1"
 description = "Photo gallery app for PostgreSQL and Django."
 readme = "README.rst"
 requires-python = ">=3.9"
@@ -28,19 +25,33 @@ classifiers = [
     "Topic :: Utilities",
 ]
 dependencies = [
-    "Django>=4.2,<6.0",
-    "Pillow>=10",
-    "psycopg2>=2.8",
-    "django-markitup>=4.0",
+    "django>=4.2",
+    "django-markitup>=4.1",
     "django-model-utils>=5.0",
+    "markdown>=3.7",
+    "pillow>=11.0",
+    "psycopg2-binary>=2.9",
 ]
-dynamic = ["version"]
 
 [project.urls]
-source = "https://github.com/zsiciarz/django-pgallery"
+Repository = "https://github.com/zsiciarz/django-pgallery"
+Issues = "https://github.com/zsiciarz/django-pgallery/issues"
+Changelog = "https://github.com/zsiciarz/django-pgallery/blob/master/CHANGES.rst"
 
-[tool.setuptools.dynamic]
-version = {attr = "pgallery.__version__"}
+[dependency-groups]
+dev = [
+    "coverage==7.6.4",
+    "djet==0.3.0",
+    "factory-boy==3.3.1",
+    "pre-commit==4.0.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.8.23,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "pgallery"
 
 [tool.ruff.lint]
 select = ["DJ", "E", "F", "W"]
