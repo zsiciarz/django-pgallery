@@ -31,7 +31,7 @@ dependencies = [
     "django-model-utils>=5.0",
     "markdown>=3.7",
     "pillow>=11.0",
-    "psycopg2-binary>=2.9",
+    "psycopg>=3.0",
 ]
 
 [project.urls]
@@ -55,4 +55,4 @@ build-backend = "uv_build"
 module-name = "pgallery"
 
 [tool.ruff.lint]
-select = ["DJ", "E", "F", "W"]
+select = ["DJ", "E", "F", "W", "UP"]
