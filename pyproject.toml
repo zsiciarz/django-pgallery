@@ -41,10 +41,10 @@ Changelog = "https://github.com/zsiciarz/django-pgallery/blob/master/CHANGES.rst
 
 [dependency-groups]
 dev = [
-    "coverage==7.6.4",
+    "coverage==7.11.0",
     "djet==0.3.0",
-    "factory-boy==3.3.1",
-    "pre-commit==4.0.1",
+    "factory-boy==3.3.3",
+    "pre-commit==4.3.0",
 ]
 
 [build-system]
