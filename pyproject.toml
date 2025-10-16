@@ -1,6 +1,6 @@
 [project]
 name = "django-pgallery"
-version = "0.12a1"
+version = "0.12"
 description = "Photo gallery app for PostgreSQL and Django."
 readme = "README.rst"
 requires-python = ">=3.10"

@@ -2,8 +2,8 @@
 Changelog
 =========
 
-Unreleased
-==========
+0.12.0
+======
 
 * Drop support for Django 3.2, Python 3.8 and 3.9
 * Add support for Django 5.0 through 5.2
