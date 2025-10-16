@@ -1,15 +1,13 @@
-from PIL import Image, ExifTags
-
 from django.conf import settings
 from django.contrib.postgres.fields import ArrayField, HStoreField
 from django.db import connection, models
 from django.db.models.query import QuerySet
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-
 from markitup.fields import MarkupField
 from model_utils import Choices
 from model_utils.models import StatusModel, TimeStampedModel
+from PIL import ExifTags, Image
 
 
 def sanitize_exif_value(key, value):
@@ -68,19 +66,16 @@ class PhotoManager(models.Manager):
         )
 
     def popular_tags(self, count=10):
-        query = (
-            """
+        query = f"""
         select
             t.tag,
             count(t.tag) as tag_count
         from
-            (select unnest(tags) as tag from %s) t
+            (select unnest(tags) as tag from {Photo._meta.db_table}) t
         group by tag
         order by tag_count desc
-        limit %%s
+        limit %s
         """
-            % Photo._meta.db_table
-        )
         cursor = connection.cursor()
         cursor.execute(query, (count,))
         tags = [{"tag": row[0], "count": row[1]} for row in cursor.fetchall()]
@@ -134,7 +129,7 @@ class Photo(TimeStampedModel):
                 }
         except Exception:
             pass
-        super(Photo, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("pgallery:photo_details", kwargs={"pk": self.pk})
