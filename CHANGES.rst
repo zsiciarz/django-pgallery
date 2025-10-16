@@ -5,7 +5,9 @@ Changelog
 Unreleased
 ==========
 
-* Drop support for Django 3.2
+* Drop support for Django 3.2, Python 3.8 and 3.9
+* Add support for Django 5.0 through 5.2
+* Switch database driver from psycopg2 to psycopg >= 3
 
 0.11.0
 ======

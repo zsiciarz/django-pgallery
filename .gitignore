@@ -20,3 +20,5 @@ htmlcov
 media/
 .mypy_cache
 .python-version
+.claude
+.envrc

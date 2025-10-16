@@ -1,0 +1,58 @@
+[project]
+name = "django-pgallery"
+version = "0.12a1"
+description = "Photo gallery app for PostgreSQL and Django."
+readme = "README.rst"
+requires-python = ">=3.10"
+authors = [{name="Zbigniew Siciarz", email="zbigniew@siciarz.net"}]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
+    "Framework :: Django :: 5.2",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "django>=4.2",
+    "django-markitup>=4.1",
+    "django-model-utils>=5.0",
+    "markdown>=3.7",
+    "pillow>=11.0",
+    "psycopg>=3.0",
+]
+
+[project.urls]
+Repository = "https://github.com/zsiciarz/django-pgallery"
+Issues = "https://github.com/zsiciarz/django-pgallery/issues"
+Changelog = "https://github.com/zsiciarz/django-pgallery/blob/master/CHANGES.rst"
+
+[dependency-groups]
+dev = [
+    "coverage==7.11.0",
+    "djet==0.3.0",
+    "factory-boy==3.3.3",
+    "pre-commit==4.3.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.8.23,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "pgallery"
+
+[tool.ruff.lint]
+select = ["DJ", "E", "F", "W", "UP"]

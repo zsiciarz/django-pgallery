@@ -1,9 +1,9 @@
-from django.views.generic import ListView, DetailView, MonthArchiveView
+from django.views.generic import DetailView, ListView, MonthArchiveView
 
 from .models import Gallery, Photo
 
 
-class StaffAccessMixin(object):
+class StaffAccessMixin:
     """
     Allow staff members to see all galleries, including drafts.
     """
@@ -33,7 +33,7 @@ class TaggedPhotoListView(ListView):
         return Photo.objects.tagged(self.kwargs["tag"])
 
     def get_context_data(self, **kwargs):
-        data = super(TaggedPhotoListView, self).get_context_data(**kwargs)
+        data = super().get_context_data(**kwargs)
         data["tag"] = self.kwargs["tag"]
         return data
 
@@ -47,7 +47,7 @@ class ExifPhotoListView(ListView):
         )
 
     def get_context_data(self, **kwargs):
-        data = super(ExifPhotoListView, self).get_context_data(**kwargs)
+        data = super().get_context_data(**kwargs)
         data["exif_key"] = self.kwargs["exif_key"]
         data["exif_value"] = self.kwargs["exif_value"]
         return data

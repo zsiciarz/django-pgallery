@@ -56,7 +56,7 @@ class GalleryAdmin(admin.ModelAdmin):
         """
         Add number of photos to each gallery.
         """
-        qs = super(GalleryAdmin, self).get_queryset(request)
+        qs = super().get_queryset(request)
         return qs.annotate(photo_count=Count("photos"))
 
     def save_model(self, request, obj, form, change):
